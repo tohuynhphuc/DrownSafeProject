@@ -7,7 +7,7 @@
 	$effect(() => {
 		navigator.geolocation.watchPosition(
 			(pos) => {
-				socket.emit("gps", pos.coords.longitude, pos.coords.latitude);
+				socket.emit("gps", data.username, pos.coords.longitude, pos.coords.latitude);
 				console.log(pos.coords.accuracy);
 			},
 			(err) => {

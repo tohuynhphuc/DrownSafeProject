@@ -18,8 +18,8 @@ export default function (server: http.Server | Http2SecureServer) {
 			if (socket.data.username === "guard") socket.join("guard");
 		});
 
-		socket.on("gps", (longtitude, latitude) => {
-			io.to(["guard", "admin"]).emit("gps", longtitude, latitude);
+		socket.on("gps", (username, longtitude, latitude) => {
+			io.to(["guard", "admin"]).emit("gps", username, longtitude, latitude);
 			console.log(longtitude, latitude);
 		});
 	});

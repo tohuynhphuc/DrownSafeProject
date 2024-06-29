@@ -1,17 +1,21 @@
 <script lang="ts">
 	import { socket } from "$lib/const";
 	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
-	import { Map, Marker, TileLayer } from "sveaflet";
+	import { Map, Marker, Popup, TileLayer } from "sveaflet";
 
 	let { data } = $props();
 
-	socket.on("gps", (longtitude, latitude) => {
-		studentCoords.push({ longtitude, latitude });
+	socket.on("gps", (username, longtitude, latitude) => {
+		const index = studentCoords.findIndex((studentCoord) => studentCoord.username == username);
+		if (index !== -1) {
+			studentCoords.splice(index);
+		}
+		studentCoords.push({ username, longtitude, latitude });
 	});
 
 	socket.emit("login", data.sessionId);
 
-	const studentCoords: { longtitude: number; latitude: number }[] = $state([]);
+	const studentCoords: { username: string; longtitude: number; latitude: number }[] = $state([]);
 </script>
 
 <Dashboardnavbar username={data.username}></Dashboardnavbar>
@@ -26,6 +30,7 @@
 		<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
 		{#each studentCoords as studentCoord}
 			<Marker latlng={[studentCoord.latitude, studentCoord.longtitude]} />
+			<Popup latlng={[studentCoord.latitude, studentCoord.longtitude]} options={{ content: studentCoord.username }} />
 		{/each}
 	</Map>
 </div>
