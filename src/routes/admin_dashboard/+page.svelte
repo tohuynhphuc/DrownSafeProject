@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { socket } from "$lib/const";
 	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
-	import { Map, Marker, Popup, TileLayer } from "sveaflet";
+	import { LayerGroup, Map, Marker, Popup, TileLayer } from "sveaflet";
 
 	let { data } = $props();
 
@@ -29,8 +29,11 @@
 	>
 		<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
 		{#each studentCoords as studentCoord}
-			<Marker latlng={[studentCoord.latitude, studentCoord.longtitude]} />
-			<Popup latlng={[studentCoord.latitude, studentCoord.longtitude]} options={{ content: studentCoord.username }} />
+			<LayerGroup>
+				<Marker latlng={[studentCoord.latitude, studentCoord.longtitude]}>
+					<Popup options={{ content: studentCoord.username }} />
+				</Marker>
+			</LayerGroup>
 		{/each}
 	</Map>
 </div>
