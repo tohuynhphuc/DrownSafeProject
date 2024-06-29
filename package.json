@@ -40,5 +40,9 @@
 		"typescript-eslint": "^8.0.0-alpha.20",
 		"vite": "^5.0.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"leaflet": "^1.9.4",
+		"sveaflet": "^0.0.4"
+	}
 }
