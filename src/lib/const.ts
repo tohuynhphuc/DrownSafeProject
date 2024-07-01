@@ -85,3 +85,27 @@ export const fake_riverBoundingBox: [number, number][] = [
 
 export const dangerZones: [number, number][][] = [riverBoundingBox];
 export const fake_dangerZones: [number, number][][] = [fake_riverBoundingBox];
+
+export const markerDangerOptions: {
+	iconUrl: string;
+	iconSize: [number, number];
+	iconAnchor: [number, number];
+	popupAnchor: [number, number];
+} = {
+	iconUrl: "/marker_danger.svg",
+	iconSize: [100, 100],
+	iconAnchor: [50, 80],
+	popupAnchor: [0, -100]
+};
+
+export const markerSafeOptions: {
+	iconUrl: string;
+	iconSize: [number, number];
+	iconAnchor: [number, number];
+	popupAnchor: [number, number];
+} = {
+	iconUrl: "/marker_safe.svg",
+	iconSize: [100, 100],
+	iconAnchor: [50, 80],
+	popupAnchor: [0, -100]
+};

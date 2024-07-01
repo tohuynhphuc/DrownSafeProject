@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { dangerZones, fake_dangerZones, socket, vguBoundingBox } from "$lib/const";
+	import { dangerZones, fake_dangerZones, markerDangerOptions, markerSafeOptions, socket, vguBoundingBox } from "$lib/const";
 	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
 	import { isPointInPolygon } from "$lib/functions.js";
 	import { icon, Icon } from "leaflet";
@@ -14,23 +14,8 @@
 	const dangerStudents: string[] = $state([]);
 
 	$effect(() => {
-		markerDangerIcon = icon({
-			iconUrl: "/marker_danger.svg",
-			iconSize: [38, 95],
-			iconAnchor: [22, 94],
-			popupAnchor: [-3, -76],
-			shadowSize: [68, 95],
-			shadowAnchor: [22, 94]
-		});
-
-		markerSafeIcon = icon({
-			iconUrl: "/marker_danger.svg",
-			iconSize: [38, 95],
-			iconAnchor: [22, 94],
-			popupAnchor: [-3, -76],
-			shadowSize: [68, 95],
-			shadowAnchor: [22, 94]
-		});
+		markerDangerIcon = icon(markerDangerOptions);
+		markerSafeIcon = icon(markerSafeOptions);
 	});
 
 	socket.on("gps", (username, longtitude, latitude, accuracy) => {
