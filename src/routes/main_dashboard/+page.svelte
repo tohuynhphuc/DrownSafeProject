@@ -10,7 +10,7 @@
 	$effect(() => {
 		navigator.geolocation.watchPosition(
 			(pos) => {
-				socket.emit("gps", data.username, pos.coords.longitude, pos.coords.latitude, pos.coords.accuracy);
+				socket.emit("gps", data.name, pos.coords.longitude, pos.coords.latitude, pos.coords.accuracy);
 				latitude = pos.coords.latitude;
 				longitude = pos.coords.longitude;
 				accuracy = pos.coords.accuracy;
@@ -28,7 +28,7 @@
 	});
 </script>
 
-<Dashboardnavbar username={data.username}></Dashboardnavbar>
+<Dashboardnavbar username={data.name}></Dashboardnavbar>
 
 <div>
 	Latitude: {latitude} <br />

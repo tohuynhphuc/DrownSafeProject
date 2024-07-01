@@ -149,13 +149,20 @@
 
 <Dashboardnavbar username={data.username}></Dashboardnavbar>
 
-<div class="flex flex-row">
-	<div>
-		{#each dangerStudents as student}
-			<div>{student} entered the danger zone</div>
-		{/each}
+<div class="flex flex-row justify-between m-1">
+	<div class="text-2xl pl-2">
+		<div class="text-4xl">Students In Danger Zone:</div>
+		<ul class="pl-10 mt-5 leading-relaxed list-['>__']">
+			{#if dangerStudents.length === 0}
+				<li>None...</li>
+			{:else}
+				{#each dangerStudents as student}
+					<li>{student}</li>
+				{/each}
+			{/if}
+		</ul>
 	</div>
-	<div class="w-[900px] h-[600px]">
+	<div class="w-[62.85%] h-[600px]">
 		<Map
 			options={{
 				center: [11.108004, 106.615491],
