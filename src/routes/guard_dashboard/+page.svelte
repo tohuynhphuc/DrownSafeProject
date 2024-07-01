@@ -76,14 +76,25 @@
 			<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
 			{#each studentCoords as studentCoord}
 				<LayerGroup>
-					<Marker
-						latlng={[studentCoord.latitude, studentCoord.longtitude]}
-						options={{
-							icon: dangerStudents.includes(studentCoord.username) ? markerDangerIcon : markerSafeIcon
-						}}
-					>
-						<Popup options={{ content: studentCoord.username }} />
-					</Marker>
+					{#if dangerStudents.includes(studentCoord.username)}
+						<Marker
+							latlng={[studentCoord.latitude, studentCoord.longtitude]}
+							options={{
+								icon: markerDangerIcon
+							}}
+						>
+							<Popup options={{ content: studentCoord.username }} />
+						</Marker>
+					{:else}
+						<Marker
+							latlng={[studentCoord.latitude, studentCoord.longtitude]}
+							options={{
+								icon: markerSafeIcon
+							}}
+						>
+							<Popup options={{ content: studentCoord.username }} />
+						</Marker>
+					{/if}
 				</LayerGroup>
 			{/each}
 		</Map>

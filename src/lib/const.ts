@@ -93,9 +93,9 @@ export const markerDangerOptions: {
 	popupAnchor: [number, number];
 } = {
 	iconUrl: "/marker_danger.svg",
-	iconSize: [100, 100],
-	iconAnchor: [50, 80],
-	popupAnchor: [0, -100]
+	iconSize: [50, 50],
+	iconAnchor: [25, 40],
+	popupAnchor: [0, 0]
 };
 
 export const markerSafeOptions: {
@@ -105,7 +105,7 @@ export const markerSafeOptions: {
 	popupAnchor: [number, number];
 } = {
 	iconUrl: "/marker_safe.svg",
-	iconSize: [100, 100],
-	iconAnchor: [50, 80],
-	popupAnchor: [0, -100]
+	iconSize: [50, 50],
+	iconAnchor: [25, 40],
+	popupAnchor: [0, 0]
 };
