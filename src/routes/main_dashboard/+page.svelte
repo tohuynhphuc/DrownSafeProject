@@ -1,13 +1,19 @@
-<script>
+<script lang="ts">
 	import { socket } from "$lib/const";
 	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
 
 	let { data } = $props();
+	let latitude = $state<number>();
+	let longitude = $state<number>();
+	let accuracy = $state<number>();
 
 	$effect(() => {
 		navigator.geolocation.watchPosition(
 			(pos) => {
 				socket.emit("gps", data.username, pos.coords.longitude, pos.coords.latitude, pos.coords.accuracy);
+				latitude = pos.coords.latitude;
+				longitude = pos.coords.longitude;
+				accuracy = pos.coords.accuracy;
 				console.log(pos.coords.accuracy);
 			},
 			(err) => {
@@ -23,3 +29,9 @@
 </script>
 
 <Dashboardnavbar username={data.username}></Dashboardnavbar>
+
+<div>
+	Latitude: {latitude} <br />
+	Longitude: {longitude} <br />
+	Accuracy: {accuracy} <br />
+</div>

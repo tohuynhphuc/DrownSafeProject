@@ -101,6 +101,8 @@
 
 	socket.emit("login", data.sessionId);
 
+	console.log(dangerStudents);
+
 	const studentCoords: { username: string; longtitude: number; latitude: number }[] = $state([]);
 
 	function isPointInPolygon(px: number, py: number, vertices: [x: number, y: number][]) {
