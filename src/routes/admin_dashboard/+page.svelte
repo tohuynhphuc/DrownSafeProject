@@ -71,7 +71,12 @@
 		[11.109331, 106.612171]
 	];
 */
-	const riverBoundingBox: [number, number][] = vguBoundingBox;
+	const riverBoundingBox: [number, number][] = [
+		[11.107524, 106.61269],
+		[11.107566, 106.612951],
+		[11.107368, 106.61296],
+		[11.107329, 106.612723]
+	];
 
 	const dangerZones: [number, number][][] = [riverBoundingBox];
 	const dangerStudents: string[] = $state([]);
@@ -90,18 +95,24 @@
 		}
 
 		if (index !== -1) {
-			studentCoords.splice(index);
+			studentCoords.splice(index, 1);
 		}
 
 		studentCoords.push({ username, latitude, longtitude });
 		if (dangerZones.some((dangerZone) => isPointInPolygon(latitude, longtitude, dangerZone))) {
-			dangerStudents.push(username);
+			if (!dangerStudents.includes(username)) {
+				dangerStudents.push(username);
+			}
+		} else {
+			const index = dangerStudents.indexOf(username);
+			if (index != -1) {
+				dangerStudents.splice(index, 1);
+			}
 		}
+		console.log(dangerStudents);
 	});
 
 	socket.emit("login", data.sessionId);
-
-	console.log(dangerStudents);
 
 	const studentCoords: { username: string; longtitude: number; latitude: number }[] = $state([]);
 
