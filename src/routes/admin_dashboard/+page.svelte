@@ -2,12 +2,36 @@
 	import { dangerZones, fake_dangerZones, socket, vguBoundingBox } from "$lib/const";
 	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
 	import { isPointInPolygon } from "$lib/functions.js";
+	import { icon, Icon } from "leaflet";
 	import { LayerGroup, Map, Marker, Popup, TileLayer } from "sveaflet";
 
 	let { data } = $props();
 	let riverOption = $state<"fakeRiver" | "realRiver">();
 
+	var markerDangerIcon = $state<Icon>();
+	var markerSafeIcon = $state<Icon>();
+
 	const dangerStudents: string[] = $state([]);
+
+	$effect(() => {
+		markerDangerIcon = icon({
+			iconUrl: "/marker_danger.svg",
+			iconSize: [38, 95],
+			iconAnchor: [22, 94],
+			popupAnchor: [-3, -76],
+			shadowSize: [68, 95],
+			shadowAnchor: [22, 94]
+		});
+
+		markerSafeIcon = icon({
+			iconUrl: "/marker_danger.svg",
+			iconSize: [38, 95],
+			iconAnchor: [22, 94],
+			popupAnchor: [-3, -76],
+			shadowSize: [68, 95],
+			shadowAnchor: [22, 94]
+		});
+	});
 
 	socket.on("gps", (username, longtitude, latitude, accuracy) => {
 		const index = studentCoords.findIndex((studentCoord) => studentCoord.username == username);
@@ -74,7 +98,12 @@
 			<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
 			{#each studentCoords as studentCoord}
 				<LayerGroup>
-					<Marker latlng={[studentCoord.latitude, studentCoord.longtitude]}>
+					<Marker
+						latlng={[studentCoord.latitude, studentCoord.longtitude]}
+						options={{
+							icon: dangerStudents.includes(studentCoord.username) ? markerDangerIcon : markerSafeIcon
+						}}
+					>
 						<Popup options={{ content: studentCoord.username }} />
 					</Marker>
 				</LayerGroup>

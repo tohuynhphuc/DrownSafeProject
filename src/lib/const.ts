@@ -1,4 +1,3 @@
-import { icon } from "leaflet";
 import { io, type Socket } from "socket.io-client";
 import type { client_server, server_client } from "./types";
 
@@ -86,21 +85,3 @@ export const fake_riverBoundingBox: [number, number][] = [
 
 export const dangerZones: [number, number][][] = [riverBoundingBox];
 export const fake_dangerZones: [number, number][][] = [fake_riverBoundingBox];
-
-export var markerDangerIcon = icon({
-	iconUrl: "/marker_danger.svg",
-	iconSize: [38, 95],
-	iconAnchor: [22, 94],
-	popupAnchor: [-3, -76],
-	shadowSize: [68, 95],
-	shadowAnchor: [22, 94]
-});
-
-export var markerSafeIcon = icon({
-	iconUrl: "/marker_danger.svg",
-	iconSize: [38, 95],
-	iconAnchor: [22, 94],
-	popupAnchor: [-3, -76],
-	shadowSize: [68, 95],
-	shadowAnchor: [22, 94]
-});
