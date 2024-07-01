@@ -4,15 +4,80 @@
 	import { LayerGroup, Map, Marker, Popup, TileLayer } from "sveaflet";
 
 	let { data } = $props();
-	console.log(
-		"Check point: ",
-		isPointInPolygon(11.109765, 106.615612, [
-			[11.108774, 106.613467],
-			[11.110589, 106.618531],
-			[11.110244, 106.61865],
-			[11.108448, 106.613621]
-		])
-	);
+
+	const vguBoundingBox: [number, number][] = [
+		[11.1107, 106.62],
+		[11.1107, 106.6103],
+		[11.1043, 106.6103],
+		[11.1043, 106.62]
+	];
+	/*
+	const riverBoundingBox: [number, number][] = [
+		[11.109436, 106.612503],
+		[11.109127, 106.612619],
+		[11.108832, 106.612999],
+		[11.108767, 106.61321],
+		[11.108767, 106.613445],
+		[11.109451, 106.612497],
+		[11.109264, 106.612541],
+		[11.109128, 106.612622],
+		[11.108984, 106.612764],
+		[11.108882, 106.612897],
+		[11.108823, 106.613022],
+		[11.108769, 106.6132],
+		[11.108759, 106.61331],
+		[11.108759, 106.613384],
+		[11.108766, 106.613444],
+		[11.109977, 106.616817],
+		[11.110492, 106.618281],
+		[11.110597, 106.618467],
+		[11.110599, 106.618471],
+		[11.110631, 106.618516],
+		[11.110251, 106.61869],
+		[11.110239, 106.618624],
+		[11.11024, 106.61855],
+		[11.11022, 106.618452],
+		[11.11003, 106.61809],
+		[11.109234, 106.615846],
+		[11.109292, 106.616012],
+		[11.109229, 106.615797],
+		[11.109137, 106.615576],
+		[11.109098, 106.615462],
+		[11.109074, 106.615405],
+		[11.109056, 106.615363],
+		[11.109013, 106.615217],
+		[11.109004, 106.615188],
+		[11.108948, 106.615041],
+		[11.108897, 106.614911],
+		[11.10884, 106.614762],
+		[11.108774, 106.614577],
+		[11.10872, 106.614437],
+		[11.108678, 106.614322],
+		[11.108645, 106.614208],
+		[11.108601, 106.614071],
+		[11.108545, 106.613872],
+		[11.108507, 106.613741],
+		[11.10848, 106.613649],
+		[11.108454, 106.613219],
+		[11.108502, 106.612959],
+		[11.108599, 106.612735],
+		[11.108855, 106.612416],
+		[11.108957, 106.612333],
+		[11.109132, 106.612265],
+		[11.109168, 106.61225],
+		[11.109195, 106.612236],
+		[11.109235, 106.612219],
+		[11.109256, 106.612209],
+		[11.109331, 106.612171]
+	];
+*/
+	const riverBoundingBox: [number, number][] = vguBoundingBox;
+
+	const dangerZones: [number, number][][] = [riverBoundingBox];
+	const dangerStudents: string[] = [];
+
+	console.log("Checking: ", isPointInPolygon(11.108495, 106.613061, riverBoundingBox));
+
 	socket.on("gps", (username, longtitude, latitude, accuracy) => {
 		const index = studentCoords.findIndex((studentCoord) => studentCoord.username == username);
 		if (accuracy > 40) {
@@ -20,14 +85,18 @@
 		}
 
 		//if (!(latitude <= 11.1107 && latitude >= 11.1043 && longtitude <= 106.62 && longtitude >= 106.6103)) {
-		if (!isPointInRectangle(latitude, longtitude, { x: 11.1107, y: 106.62 }, { x: 11.1107, y: 106.6103 }, { x: 11.1043, y: 106.62 })) {
+		if (!isPointInPolygon(latitude, longtitude, vguBoundingBox)) {
 			return;
 		}
 
 		if (index !== -1) {
 			studentCoords.splice(index);
 		}
-		studentCoords.push({ username, longtitude, latitude });
+
+		studentCoords.push({ username, latitude, longtitude });
+		if (dangerZones.some((dangerZone) => isPointInPolygon(latitude, longtitude, dangerZone))) {
+			dangerStudents.push(username);
+		}
 	});
 
 	socket.emit("login", data.sessionId);
@@ -63,79 +132,31 @@
 
 		return isInside;
 	}
-
-	// Function to calculate the area of a triangle given its vertices
-	function triangleArea(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number) {
-		return Math.abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0);
-	}
-
-	// Function to check if a point (x, y) is inside the parallelogram
-	function isPointInQuadrilateral(x: number, y: number, x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, x4: number, y4: number) {
-		x -= 11;
-		x1 -= 11;
-		x2 -= 11;
-		x3 -= 11;
-		x4 -= 11;
-		y -= 106;
-		y1 -= 106;
-		y2 -= 106;
-		y3 -= 106;
-		y4 -= 106;
-		// Calculate the area of the parallelogram using two triangles
-		let parallelogramArea = triangleArea(x1, y1, x2, y2, x3, y3) + triangleArea(x1, y1, x3, y3, x4, y4);
-
-		// Calculate the areas of the triangles formed by the point and each pair of vertices
-		let area1 = triangleArea(x, y, x1, y1, x2, y2);
-		let area2 = triangleArea(x, y, x2, y2, x3, y3);
-		let area3 = triangleArea(x, y, x3, y3, x4, y4);
-		let area4 = triangleArea(x, y, x4, y4, x1, y1);
-		console.log("Quad Area = ", parallelogramArea);
-		console.log("Sum Area = ", area1 + area2 + area3 + area4);
-		// If the sum of the areas of the four triangles is equal to the area of the parallelogram, the point is inside
-		return Math.abs(parallelogramArea - (area1 + area2 + area3 + area4)) < Number.EPSILON;
-	}
-
-	function isPointInRectangle(px: number, py: number, A: { x: number; y: number }, B: { x: number; y: number }, D: { x: number; y: number }) {
-		function vector(x1: number, y1: number, x2: number, y2: number) {
-			return { x: x2 - x1, y: y2 - y1 };
-		}
-
-		function dotProduct(v1: { x: number; y: number }, v2: { x: number; y: number }) {
-			return v1.x * v2.x + v1.y * v2.y;
-		}
-
-		// Vectors
-		const AB = vector(A.x, A.y, B.x, B.y);
-		const AD = vector(A.x, A.y, D.x, D.y);
-		const AP = vector(A.x, A.y, px, py);
-
-		// Dot products
-		const AB_AB = dotProduct(AB, AB);
-		const AB_AP = dotProduct(AB, AP);
-		const AD_AD = dotProduct(AD, AD);
-		const AD_AP = dotProduct(AD, AP);
-
-		// Check if point is within the rectangle
-		return 0 <= AB_AP && AB_AP <= AB_AB && 0 <= AD_AP && AD_AP <= AD_AD;
-	}
 </script>
 
 <Dashboardnavbar username={data.username}></Dashboardnavbar>
 
-<div class="w-[900px] h-[600px]">
-	<Map
-		options={{
-			center: [11.108004, 106.615491],
-			zoom: 16
-		}}
-	>
-		<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
-		{#each studentCoords as studentCoord}
-			<LayerGroup>
-				<Marker latlng={[studentCoord.latitude, studentCoord.longtitude]}>
-					<Popup options={{ content: studentCoord.username }} />
-				</Marker>
-			</LayerGroup>
+<div class="flex flex-row">
+	<div>
+		{#each dangerStudents as student}
+			<div>{student} entered the danger zone</div>
 		{/each}
-	</Map>
+	</div>
+	<div class="w-[900px] h-[600px]">
+		<Map
+			options={{
+				center: [11.108004, 106.615491],
+				zoom: 16
+			}}
+		>
+			<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
+			{#each studentCoords as studentCoord}
+				<LayerGroup>
+					<Marker latlng={[studentCoord.latitude, studentCoord.longtitude]}>
+						<Popup options={{ content: studentCoord.username }} />
+					</Marker>
+				</LayerGroup>
+			{/each}
+		</Map>
+	</div>
 </div>

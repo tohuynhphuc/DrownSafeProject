@@ -1,10 +1,11 @@
 import { fail, redirect } from "@sveltejs/kit";
 
+import { admin } from "$lib/const";
 import { lucia } from "$lib/server/auth";
 import type { Actions, PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async (event) => {
-	if (!event.locals.user) {
+	if (!event.locals.user || event.locals.user.username != admin) {
 		return redirect(302, "/login");
 	}
 

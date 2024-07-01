@@ -1,6 +1,7 @@
 import type http from "http";
 import type { Http2SecureServer } from "http2";
 import { Server } from "socket.io";
+import { admin, guard } from "../const";
 import { type client_server, type server_client } from "../types";
 import { lucia } from "./auth";
 
@@ -14,12 +15,12 @@ export default function (server: http.Server | Http2SecureServer) {
 			if (!user) return; // socket.emit("error", "login", "Invalid Session ID!")
 
 			socket.data.username = user.username;
-			if (socket.data.username === "administration") socket.join("admin");
-			if (socket.data.username === "guard") socket.join("guard");
+			if (socket.data.username === admin) socket.join("admin");
+			if (socket.data.username === guard) socket.join("guard");
 		});
 
-		socket.on("gps", (username, longtitude, latitude) => {
-			io.to(["guard", "admin"]).emit("gps", username, longtitude, latitude);
+		socket.on("gps", (username, longtitude, latitude, accuracy) => {
+			io.to(["guard", "admin"]).emit("gps", username, longtitude, latitude, accuracy);
 			console.log(longtitude, latitude);
 		});
 	});

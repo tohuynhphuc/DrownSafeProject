@@ -7,3 +7,5 @@ export const username_length = [3, 31] as const;
 export const password_length = [6, 255] as const;
 export const username_regex = /^[a-zA-Z0-9-_]+$/;
 export const socket: Socket<server_client, client_server> = io();
+export const admin = "administration";
+export const guard = "guard";
