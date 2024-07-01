@@ -1,7 +1,7 @@
 <script>
-	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
-	import Navbar from '$lib/navbar.svelte';
+	import { enhance } from "$app/forms";
+	import { page } from "$app/stores";
+	import Navbar from "$lib/navbar.svelte";
 </script>
 
 <Navbar></Navbar>
@@ -24,7 +24,7 @@
 </div>
 
 {#if $page.form?.message}
-	<div class="text-error px-[1vw] py-[0.5vw] text-center text-[2vw]">
+	<div class="text-error px-[1vw] py-[0.5vw] text-center text-2xl">
 		{$page.form?.message}
 	</div>
 {/if}
