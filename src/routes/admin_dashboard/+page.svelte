@@ -74,7 +74,7 @@
 	const riverBoundingBox: [number, number][] = vguBoundingBox;
 
 	const dangerZones: [number, number][][] = [riverBoundingBox];
-	const dangerStudents: string[] = [];
+	const dangerStudents: string[] = $state([]);
 
 	console.log("Checking: ", isPointInPolygon(11.108495, 106.613061, riverBoundingBox));
 
