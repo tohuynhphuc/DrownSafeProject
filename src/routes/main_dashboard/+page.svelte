@@ -63,21 +63,58 @@
 <Background></Background>
 <Dashboardnavbar username={data.name}></Dashboardnavbar>
 
-<div class="">
+<!-- <div class="">
 	Latitude: {latitude} <br />
 	Longitude: {longitude} <br />
 	Accuracy: {accuracy} <br />
-</div>
+</div> -->
 
-<div class="grid grid-cols-[1fr_62.91%] justify-between m-1 gap-1">
-	<div class="text-2xl pl-2">
-		<div class="text-4xl w-full">Students In Danger Zone:</div>
+<div class="grid grid-cols-1 xl:grid-cols-[1fr_62.91%] justify-between">
+	<div class="flex flex-col items-center text-2xl px-10 gap-3 bg-white bg-opacity-70 py-10">
+		<div class="text-3xl w-full font-bold text-center mb-7">
+			Current Situation: {#if isDanger}
+				<span class="text-error">Dangerous</span>
+			{:else if isInSchool}
+				<span class="text-success">Safe</span>
+			{:else}
+				<span class="text-warning">Unknown</span>
+			{/if}
+		</div>
+		<div
+			class="flex flex-row items-center justify-between max-w-[30rem] w-full bg-red-100 rounded-3xl p-6"
+		>
+			<div class="flex flex-row items-center gap-3 font-semibold">
+				<img src="latitude.png" alt="" class="inline size-10" />
+				Latitude
+			</div>
+			<div>{latitude.toFixed(4)}</div>
+		</div>
+
+		<div
+			class="flex flex-row items-center justify-between max-w-[30rem] w-full bg-yellow-100 rounded-3xl p-6"
+		>
+			<div class="flex flex-row items-center gap-3 font-semibold">
+				<img src="latitude.png" alt="" class="inline size-10" />
+				Longitude
+			</div>
+			<div>{longitude.toFixed(4)}</div>
+		</div>
+
+		<div
+			class="flex flex-row items-center justify-between max-w-[30rem] w-full bg-green-100 rounded-3xl p-6"
+		>
+			<div class="flex flex-row items-center gap-3 font-semibold">
+				<img src="latitude.png" alt="" class="inline size-10" />
+				Accuracy
+			</div>
+			<div>{accuracy.toFixed(2)}m</div>
+		</div>
 	</div>
-	<div class="h-[600px] -z-10">
+	<div class="h-[600px] z-0 shadow-2xl">
 		<Map
 			options={{
 				center: [11.107737, 106.615169],
-				zoom: 17
+				zoom: window.screen.width < 1280 ? 16 : 17
 			}}
 		>
 			<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />

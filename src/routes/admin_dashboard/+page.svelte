@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Background from "$lib/background.svelte";
 	import {
 		dangerZones,
 		fake_dangerZones,
@@ -68,32 +69,35 @@
 	<title>Admin Dashboard - DrownSafe</title>
 </svelte:head>
 
+<Background></Background>
 <Dashboardnavbar username={data.username}></Dashboardnavbar>
 
-<div class="grid grid-cols-[1fr_62.91%] justify-between gap-1">
-	<div class="text-2xl pl-2">
+<div class="grid grid-cols-[1fr_62.91%] justify-between">
+	<div class="flex flex-col items-center text-2xl px-10 gap-3 bg-white bg-opacity-70 py-10">
 		<!-- <div class="flex flex-col items-center justify-center">
 			<select bind:value={riverOption} class="select select-primary">
 				<option value="realRiver">Real</option>
 				<option value="fakeRiver">fAkE</option>
 			</select>
-		</div> -->
-		<div class="text-4xl w-full">Students In Danger Zone:</div>
-		<ul class="pl-10 mt-5 leading-relaxed list-['>_']">
-			{#if dangerStudents.length === 0}
-				<li>None...</li>
-			{:else}
+			</div> -->
+		{#if dangerStudents.length === 0}
+			<div class="text-3xl w-full font-bold text-center text-success">
+				There are no Students in danger
+			</div>
+		{:else}
+			<div class="text-6xl w-full font-bold text-center text-error">STUDENTS ARE IN DANGER</div>
+			<ul class="pl-10 mt-5 leading-relaxed list-['>_']">
 				{#each dangerStudents as student}
-					<li class="text-red-600 text-5xl">{student}</li>
+					<li class="text-error text-5xl">{student}</li>
 				{/each}
-			{/if}
-		</ul>
+			</ul>
+		{/if}
 	</div>
-	<div class="h-[600px] -z-10">
+	<div class="h-[600px] z-0 shadow-2xl">
 		<Map
 			options={{
 				center: [11.107737, 106.615169],
-				zoom: 17
+				zoom: window.screen.width < 1280 ? 16 : 17
 			}}
 		>
 			<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
