@@ -1,5 +1,12 @@
 <script lang="ts">
-	import { dangerZones, fake_dangerZones, markerDangerOptions, markerSafeOptions, socket, vguBoundingBox } from "$lib/const";
+	import {
+		dangerZones,
+		fake_dangerZones,
+		markerDangerOptions,
+		markerSafeOptions,
+		socket,
+		vguBoundingBox
+	} from "$lib/const";
 	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
 	import { isPointInPolygon } from "$lib/functions.js";
 	import { icon, Icon } from "leaflet";
@@ -34,7 +41,11 @@
 
 		studentCoords.push({ username, latitude, longtitude });
 
-		if ((riverOption === "fakeRiver" ? fake_dangerZones : dangerZones).some((dangerZone) => isPointInPolygon(latitude, longtitude, dangerZone))) {
+		if (
+			(riverOption === "fakeRiver" ? fake_dangerZones : dangerZones).some((dangerZone) =>
+				isPointInPolygon(latitude, longtitude, dangerZone)
+			)
+		) {
 			if (!dangerStudents.includes(username)) {
 				dangerStudents.push(username);
 			}
@@ -52,6 +63,10 @@
 	const studentCoords: { username: string; longtitude: number; latitude: number }[] = $state([]);
 </script>
 
+<svelte:head>
+	<title>Guard Dashboard - DrownSafe</title>
+</svelte:head>
+
 <Dashboardnavbar username={data.username}></Dashboardnavbar>
 
 <div class="grid grid-cols-[1fr_62.91%] justify-between m-1 gap-1">
@@ -66,7 +81,7 @@
 			<div class="text-red-600 text-7xl w-full">There are Students In Danger Zone</div>
 		{/if}
 	</div>
-	<div class="h-[600px]">
+	<div class="h-[600px] -z-10">
 		<Map
 			options={{
 				center: [11.107737, 106.615169],

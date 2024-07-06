@@ -1,7 +1,17 @@
 <script>
+	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
 	import Footer from "$lib/footer.svelte";
+
+	let { data } = $props();
 </script>
 
+<svelte:head>
+	<title>DrownSafe</title>
+</svelte:head>
+
+<Dashboardnavbar username={data.name}></Dashboardnavbar>
+
+<!--
 <div class="text-xl py-7 px-5 xl:px-20">
 	<div class="flex flex-row justify-between items-center">
 		<div class="flex flex-row items-center gap-2">
@@ -18,7 +28,7 @@
 		</div>
 	</div>
 </div>
-
+-->
 <div class="bg-customlav">
 	<div class="flex flex-col justify-between gap-5 text-xl py-14 px-5 xl:px-20 xl:flex-row">
 		<div class="flex flex-col gap-10">

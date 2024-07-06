@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Background from "$lib/background.svelte";
 	import { socket } from "$lib/const";
 	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
 
@@ -10,7 +11,13 @@
 	$effect(() => {
 		navigator.geolocation.watchPosition(
 			(pos) => {
-				socket.emit("gps", data.name, pos.coords.longitude, pos.coords.latitude, pos.coords.accuracy);
+				socket.emit(
+					"gps",
+					data.name,
+					pos.coords.longitude,
+					pos.coords.latitude,
+					pos.coords.accuracy
+				);
 				latitude = pos.coords.latitude;
 				longitude = pos.coords.longitude;
 				accuracy = pos.coords.accuracy;
@@ -28,9 +35,14 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Main Dashboard - DrownSafe</title>
+</svelte:head>
+
+<Background></Background>
 <Dashboardnavbar username={data.name}></Dashboardnavbar>
 
-<div>
+<div class="">
 	Latitude: {latitude} <br />
 	Longitude: {longitude} <br />
 	Accuracy: {accuracy} <br />

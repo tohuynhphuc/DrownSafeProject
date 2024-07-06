@@ -4,6 +4,10 @@
 	let { data } = $props();
 </script>
 
+<svelte:head>
+	<title>Water Safety Information - DrownSafe</title>
+</svelte:head>
+
 <Dashboardnavbar username={data.username}></Dashboardnavbar>
 
 <div class="grid grid-cols-[1fr_3fr] gap-6">
