@@ -63,14 +63,14 @@
 			</select>
 		</div>
 		{#if dangerStudents.length > 0}
-			<div class="text-4xl w-full">There are Students In Danger Zone</div>
+			<div class="text-red-600 text-7xl w-full">There are Students In Danger Zone</div>
 		{/if}
 	</div>
 	<div class="h-[600px]">
 		<Map
 			options={{
-				center: [11.108004, 106.615491],
-				zoom: 16
+				center: [11.107737, 106.615169],
+				zoom: 17
 			}}
 		>
 			<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />

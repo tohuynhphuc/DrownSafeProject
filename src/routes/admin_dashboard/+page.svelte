@@ -63,12 +63,12 @@
 			</select>
 		</div>
 		<div class="text-4xl w-full">Students In Danger Zone:</div>
-		<ul class="pl-10 mt-5 leading-relaxed list-['>__']">
+		<ul class="pl-10 mt-5 leading-relaxed list-['>_']">
 			{#if dangerStudents.length === 0}
 				<li>None...</li>
 			{:else}
 				{#each dangerStudents as student}
-					<li>{student}</li>
+					<li class="text-red-600 text-5xl">{student}</li>
 				{/each}
 			{/if}
 		</ul>
@@ -76,8 +76,8 @@
 	<div class="h-[600px]">
 		<Map
 			options={{
-				center: [11.108004, 106.615491],
-				zoom: 16
+				center: [11.107737, 106.615169],
+				zoom: 17
 			}}
 		>
 			<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />

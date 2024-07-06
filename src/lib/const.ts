@@ -95,7 +95,7 @@ export const markerDangerOptions: {
 	iconUrl: "/marker_danger.svg",
 	iconSize: [50, 50],
 	iconAnchor: [25, 40],
-	popupAnchor: [0, -25]
+	popupAnchor: [0, -30]
 };
 
 export const markerSafeOptions: {
@@ -107,5 +107,5 @@ export const markerSafeOptions: {
 	iconUrl: "/marker_safe.svg",
 	iconSize: [50, 50],
 	iconAnchor: [25, 40],
-	popupAnchor: [0, -25]
+	popupAnchor: [0, -30]
 };
