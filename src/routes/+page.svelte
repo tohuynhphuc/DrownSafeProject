@@ -42,8 +42,8 @@
 				>Get Started</a
 			>
 		</div>
-		<div class="w-[100%]">
-			<img src="vgu.jpg" alt="VGU Campus with the Sunrise River" class="size-fit rounded-2xl" />
+		<div class="w-full">
+			<img src="vgu.jpg" alt="VGU Campus with the Sunrise River" class="rounded-2xl" />
 		</div>
 	</div>
 </div>
@@ -115,7 +115,7 @@
 			>
 		</div>
 		<div class="w-[100%]">
-			<img src="dogswim.jpeg" alt="Swimming Dog" class="size-fit rounded-2xl" />
+			<img src="dogswim.jpeg" alt="Swimming Dog" class="rounded-2xl" />
 		</div>
 	</div>
 </div>

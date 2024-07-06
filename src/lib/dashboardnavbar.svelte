@@ -3,7 +3,7 @@
 	let { username }: { username: string | undefined } = $props();
 </script>
 
-<div class="text-xl py-7 px-5 bg-white xl:px-20 z-50">
+<div class="text-xl py-7 px-5 bg-blue-100 xl:px-20 z-50 bg-opacity-100">
 	<div class="flex flex-row justify-between items-center">
 		<a href="/" class="flex flex-row items-center gap-2">
 			<img src="favicon.png" alt="Icon" class="size-10" />
@@ -12,19 +12,22 @@
 		{#if username}
 			<div class="flex flex-col items-end">
 				<div class="peer">
-					<div class="p-2 border-2 rounded-2xl bg-customyellow hover:bg-customyellowdark">
-						Hello {username} v
+					<div
+						class="flex flex-row items-end justify-center gap-3 py-2 px-6 border-2 border-red-500 shadow-xl rounded-2xl bg-blue-300 hover:bg-blue-400"
+					>
+						Hello {username}
+						<img src="down.png" alt="" class="size-3 mb-[0.36rem]" />
 					</div>
 				</div>
 				<div class="peer-hover:block hidden absolute hover:block mt-12">
-					<div class="flex flex-col gap-2 shadow-xl p-2 rounded-2xl bg-gray-200">
-						<div class="p-2 hover:bg-custombluelight rounded-2xl">
+					<div class="flex flex-col gap-2 shadow-xl p-2 rounded-2xl bg-blue-50">
+						<div class="p-2 hover:bg-red-100 rounded-2xl">
 							<a href="/login">Dashboard</a>
 						</div>
-						<div class="p-2 hover:bg-custombluelight rounded-2xl">
+						<div class="p-2 hover:bg-yellow-100 rounded-2xl">
 							<a href="/water_safety_information">Water Safety Information</a>
 						</div>
-						<div class="p-2 hover:bg-custombluelight rounded-2xl">
+						<div class="p-2 hover:bg-green-100 rounded-2xl">
 							<form class="inline" use:enhance method="post" action="?/logout">
 								<input type="submit" value="Log Out" />
 							</form>

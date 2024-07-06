@@ -8,6 +8,7 @@
 		vguBoundingBox
 	} from "$lib/const";
 	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
+	import Footer from "$lib/footer.svelte";
 	import { isPointInPolygon } from "$lib/functions.js";
 	import { icon, Icon } from "leaflet";
 	import { LayerGroup, Map, Marker, Popup, TileLayer } from "sveaflet";
@@ -69,14 +70,14 @@
 
 <Dashboardnavbar username={data.username}></Dashboardnavbar>
 
-<div class="grid grid-cols-[1fr_62.91%] justify-between m-1 gap-1">
+<div class="grid grid-cols-[1fr_62.91%] justify-between gap-1">
 	<div class="text-2xl pl-2">
-		<div class="flex flex-col items-center justify-center">
+		<!-- <div class="flex flex-col items-center justify-center">
 			<select bind:value={riverOption} class="select select-primary">
 				<option value="realRiver">Real</option>
 				<option value="fakeRiver">fAkE</option>
 			</select>
-		</div>
+		</div> -->
 		<div class="text-4xl w-full">Students In Danger Zone:</div>
 		<ul class="pl-10 mt-5 leading-relaxed list-['>_']">
 			{#if dangerStudents.length === 0}
@@ -122,3 +123,5 @@
 		</Map>
 	</div>
 </div>
+
+<Footer></Footer>

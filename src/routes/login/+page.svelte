@@ -34,14 +34,13 @@
 				<a href="/register" class="link link-error"> Register now</a>
 			</div>
 			<input type="submit" class="btn btn-primary w-full" value="Log In" />
+			{#if $page.form?.message}
+				<div class="xl:col-span-2 text-error py-2 text-center">
+					{$page.form?.message}
+				</div>
+			{/if}
 		</form>
 	</div>
 </div>
 
 <Footer></Footer>
-
-{#if $page.form?.message}
-	<div class="text-error px-[1vw] py-[0.5vw] text-center text-2xl">
-		{$page.form?.message}
-	</div>
-{/if}
