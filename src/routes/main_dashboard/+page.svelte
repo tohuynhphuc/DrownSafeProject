@@ -81,8 +81,8 @@
 			}}
 		>
 			<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
-			<LayerGroup>
-				{#if isInSchool}
+			{#if isInSchool}
+				<LayerGroup>
 					{#if isDanger}
 						<Marker
 							latlng={[latitude, longitude]}
@@ -102,8 +102,8 @@
 							<Popup options={{ content: data.name }} />
 						</Marker>
 					{/if}
-				{/if}
-			</LayerGroup>
+				</LayerGroup>
+			{/if}
 		</Map>
 	</div>
 </div>
