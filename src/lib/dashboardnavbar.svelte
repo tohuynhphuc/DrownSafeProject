@@ -13,22 +13,45 @@
 			<div class="flex flex-col items-end z-50">
 				<div class="peer z-50">
 					<div
-						class="flex flex-row items-end justify-center gap-3 py-2 px-6 border-2 border-red-500 shadow-xl rounded-2xl bg-blue-300 hover:bg-blue-400 z-50"
+						class="flex flex-row items-end justify-center gap-3 py-2 pl-4 pr-6 border-2 border-red-500 shadow-xl rounded-2xl bg-blue-300 hover:bg-blue-400 z-50"
 					>
+						<img src="avatar.png" alt="" class="size-8 z-50" />
 						Hello {username}
 						<img src="down.png" alt="" class="size-3 mb-[0.36rem] z-50" />
 					</div>
 				</div>
 				<div class="peer-hover:block hidden absolute hover:block mt-12 z-50">
 					<div class="flex flex-col gap-2 shadow-xl p-2 rounded-2xl bg-blue-50 z-50">
-						<a href="/login">
-							<div class="p-2 hover:bg-red-100 rounded-2xl z-50">Dashboard</div>
+						<a href="/login" class="flex flex-row items-center">
+							<div
+								class="flex flex-row items-center justify-start hover:bg-red-100 rounded-2xl z-50 pl-2 w-full"
+							>
+								<div class="flex items-center justify-center bg-gray-300 w-9 h-9 rounded-full">
+									<img src="dashboard.png" alt="" class="size-5 inline" />
+								</div>
+								<div class="p-2">Dashboard</div>
+							</div>
 						</a>
-						<a href="/water_safety_information">
-							<div class="p-2 hover:bg-yellow-100 rounded-2xl z-50">Water Safety Information</div>
+						<a href="/water_safety_information" class="flex flex-row items-center">
+							<div
+								class="flex flex-row items-center justify-start hover:bg-yellow-100 rounded-2xl z-50 pl-2 w-full"
+							>
+								<div class="flex items-center justify-center bg-gray-300 w-9 h-9 rounded-full">
+									<img src="info.png" alt="" class="size-5 inline" />
+								</div>
+								<div class="p-2">Water Safety Information</div>
+							</div>
 						</a>
 						<div class=" hover:bg-green-100 rounded-2xl z-50">
-							<form class="inline" use:enhance method="post" action="?/logout">
+							<form
+								class="flex flex-row items-center ml-2"
+								use:enhance
+								method="post"
+								action="?/logout"
+							>
+								<div class="flex items-center justify-center bg-gray-300 w-10 h-9 rounded-full">
+									<img src="logout.png" alt="" class="size-5 inline" />
+								</div>
 								<input
 									type="submit"
 									value="Log Out"
