@@ -1,8 +1,7 @@
-import { fail, redirect } from "@sveltejs/kit";
+import { redirect } from "@sveltejs/kit";
 
 import { admin } from "$lib/const";
-import { lucia } from "$lib/server/auth";
-import type { Actions, PageServerLoad } from "./$types";
+import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.user || event.locals.user.username != admin) {
@@ -17,21 +16,4 @@ export const load: PageServerLoad = async (event) => {
 		studentID: event.locals.user.studentID,
 		sessionId: event.locals.session?.id
 	};
-};
-
-export const actions: Actions = {
-	logout: async (event) => {
-		if (!event.locals.session) {
-			return fail(401);
-		}
-
-		await lucia.invalidateSession(event.locals.session?.id);
-
-		const sessionCookie = lucia.createBlankSessionCookie();
-		event.cookies.set(sessionCookie.name, sessionCookie.value, {
-			path: ".",
-			...sessionCookie.attributes
-		});
-		redirect(302, "/login");
-	}
 };

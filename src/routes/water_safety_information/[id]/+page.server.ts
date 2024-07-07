@@ -1,5 +1,6 @@
 import { redirect } from "@sveltejs/kit";
 
+import { db, type DatabaseWSI } from "$lib/server/db";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async (event) => {
@@ -7,12 +8,21 @@ export const load: PageServerLoad = async (event) => {
 		return redirect(302, "/login");
 	}
 
+	const wsi = db.prepare("SELECT * FROM waterInfo WHERE id = ?").get(event.params.id) as
+		| DatabaseWSI
+		| undefined;
+
 	return {
 		id: event.locals.user.id,
 		username: event.locals.user.username,
 		name: event.locals.user.name,
 		email: event.locals.user.email,
 		studentID: event.locals.user.studentID,
-		sessionId: event.locals.session?.id
+		wsi: {
+			id: wsi?.id,
+			title: wsi?.title,
+			author: wsi?.author,
+			content: wsi?.content
+		}
 	};
 };

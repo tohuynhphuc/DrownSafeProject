@@ -43,7 +43,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@types/nodemailer": "^6.4.15",
+		"dotenv": "^16.4.5",
 		"leaflet": "^1.9.4",
+		"nodemailer": "^6.9.14",
 		"sveaflet": "^0.0.4"
 	}
 }

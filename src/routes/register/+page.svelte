@@ -37,15 +37,21 @@
 			<div>
 				<div class="text-xl required">EMAIL</div>
 				<div class="h-2"></div>
-				<input type="text" class="input input-primary w-full" name="email" required />
+				<input type="email" class="input input-primary w-full" name="email" required />
 			</div>
 			<div>
 				<div class="text-xl required">USERNAME</div>
 				<div class="h-2"></div>
-				<input type="text" class="input input-primary w-full" name="username" required />
+				<input
+					type="text"
+					class="input input-primary w-full"
+					name="username"
+					autocapitalize="none"
+					required
+				/>
 			</div>
 			<div>
-				<div class="text-xl required">NEW PASSWORD</div>
+				<div class="text-xl required">PASSWORD</div>
 				<div class="h-2"></div>
 				<input type="password" class="input input-primary w-full" name="password" required />
 			</div>
@@ -67,10 +73,3 @@
 </div>
 
 <Footer></Footer>
-
-<style>
-	.required:after {
-		content: " *";
-		color: red;
-	}
-</style>

@@ -72,7 +72,7 @@
 <Background></Background>
 <Dashboardnavbar username={data.username}></Dashboardnavbar>
 
-<div class="grid grid-cols-[1fr_62.91%] justify-between">
+<div class="grid grid-cols-1 xl:grid-cols-[1fr_62.91%] justify-between">
 	<div
 		class="flex flex-col items-center justify-center text-2xl px-10 gap-3 bg-white bg-opacity-70 py-10"
 	>

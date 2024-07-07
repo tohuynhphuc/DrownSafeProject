@@ -22,7 +22,13 @@
 			<div>
 				<div class="text-xl">USERNAME</div>
 				<div class="h-2"></div>
-				<input type="text" class="input input-primary w-full" name="username" required />
+				<input
+					type="text"
+					class="input input-primary w-full"
+					name="username"
+					required
+					autocapitalize="none"
+				/>
 			</div>
 			<div>
 				<div class="text-xl">PASSWORD</div>
@@ -30,6 +36,7 @@
 				<input type="password" class="input input-primary w-full" name="password" required />
 			</div>
 			<div class="flex flex-col items-center justify-center gap-1">
+				<a href="/forget" class="link link-error mb-[0.15rem]"> Forgot Password</a>
 				<div>Don't have an account yet?</div>
 				<a href="/register" class="link link-error"> Register now</a>
 			</div>

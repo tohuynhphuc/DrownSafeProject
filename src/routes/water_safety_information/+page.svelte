@@ -14,11 +14,26 @@
 <Dashboardnavbar username={data.username}></Dashboardnavbar>
 
 <div class="flex flex-col my-5 gap-5 mx-20">
-	<div
+	{#each data.wsi as einWSI}
+		<a
+			href="./{einWSI.id}"
+			class="grid grid-cols-[1fr_3fr] gap-6 bg-white bg-opacity-80 hover:bg-opacity-90 px-20 py-5 rounded-3xl"
+		>
+			<div class="flex flex-row">
+				<img src="/api/wsi_image/{einWSI.id}" alt="" class="size-64 object-cover" />
+			</div>
+			<div class="flex flex-col w-full text-2xl my-12 leading-loose">
+				<div class="text-3xl font-semibold">{einWSI.title}</div>
+				<div>Author: {einWSI.author}</div>
+			</div>
+		</a>
+	{/each}
+
+	<!-- <div
 		class="grid grid-cols-[1fr_3fr] gap-6 bg-white bg-opacity-80 hover:bg-opacity-90 px-20 py-5 rounded-3xl"
 	>
 		<div class="flex flex-row">
-			<img src="drown.png" alt="" class="h-64" />
+			<img src="/drown.png" alt="" class="h-64" />
 		</div>
 		<div class="flex flex-col w-full text-2xl my-12 leading-loose">
 			<div class="text-3xl font-semibold">Drowning Statistics for 2023</div>
@@ -30,7 +45,7 @@
 		class="grid grid-cols-[1fr_3fr] gap-6 bg-white bg-opacity-80 hover:bg-opacity-90 px-20 py-5 rounded-3xl"
 	>
 		<div class="flex flex-row">
-			<img src="cpr.png" alt="" class="h-64" />
+			<img src="/cpr.png" alt="" class="h-64" />
 		</div>
 		<div class="flex flex-col w-full text-2xl my-12 leading-loose">
 			<div class="text-3xl font-semibold">First Aid Basics for Beginners</div>
@@ -42,7 +57,7 @@
 		class="grid grid-cols-[1fr_3fr] gap-6 bg-white bg-opacity-80 hover:bg-opacity-90 px-20 py-5 rounded-3xl"
 	>
 		<div class="flex flex-row">
-			<img src="cpr (1).png" alt="" class="h-64" />
+			<img src="/cpr (1).png" alt="" class="h-64" />
 		</div>
 		<div class="flex flex-col w-full text-2xl my-12 leading-loose">
 			<div class="text-3xl font-semibold">
@@ -51,7 +66,7 @@
 			</div>
 			<div>Author: VGU Admin</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 
 <Footer></Footer>
