@@ -61,18 +61,19 @@ export const actions: Actions = {
 			);
 
 			let transporter = nodemailer.createTransport({
-				service: "hotmail",
+				service: "gmail",
 				auth: {
-					user: "phuctohuynh@outlook.com",
+					user: "rizlineplayer@gmail.com",
 					pass: process.env.EMAIL_PASSWORD
 				}
 			});
+			console.log(process.env.EMAIL_PASSWORD);
 
 			let mailOptions = {
 				from: "phuctohuynh@outlook.com",
 				to: user.email,
 				subject: "[DrownSafe] - Reset Password",
-				text: `Please click on the link below to reset your password. If you didn't request this, please ignore this email and move on with your life.<br><br><a href="https://drownsafe.20050703.xyz/forget/${tokenID}">Click here!</a><br><br>Or you can copy the link and paste it into your browser: https://drownsafe.20050703.xyz/forget/${tokenID}`
+				html: `Please click on the link below to reset your password. If you didn't request this, please ignore this email and move on with your life.<br><br><a href="https://drownsafe.20050703.xyz/forget/${tokenID}">Click here!</a><br><br>Or you can copy the link and paste it into your browser: https://drownsafe.20050703.xyz/forget/${tokenID}`
 			};
 
 			transporter.sendMail(mailOptions, function (error, info) {
