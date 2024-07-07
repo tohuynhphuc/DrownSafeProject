@@ -83,7 +83,10 @@
 			</select>
 		</div> -->
 		{#if dangerStudents.length > 0}
-			<div class="text-6xl w-full font-bold text-center text-error">STUDENTS ARE IN DANGER</div>
+			<div class="text-6xl w-full font-bold text-center text-error animate-blink">
+				STUDENTS ARE IN DANGER
+			</div>
+			<audio src="/sounds/warning.mp3" loop autoplay></audio>
 		{:else}
 			<div class="text-6xl w-full font-bold text-center text-success">STUDENTS ARE ALL SAFE</div>
 		{/if}

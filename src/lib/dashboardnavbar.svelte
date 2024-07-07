@@ -20,7 +20,7 @@
 						<img src="down.png" alt="" class="size-3 mb-[0.36rem] z-50" />
 					</div>
 				</div>
-				<div class="peer-hover:block hidden absolute hover:block mt-12 z-50">
+				<div class="peer-hover:block hidden absolute hover:block mt-[3.25rem] z-50">
 					<div class="flex flex-col gap-2 shadow-xl p-2 rounded-2xl bg-blue-50 z-50">
 						<a href="/login" class="flex flex-row items-center">
 							<div
@@ -49,7 +49,9 @@
 								method="post"
 								action="?/logout"
 							>
-								<div class="flex items-center justify-center bg-gray-300 w-10 h-9 rounded-full">
+								<div
+									class="flex items-center justify-center bg-gray-300 w-[2.6rem] h-9 rounded-full"
+								>
 									<img src="logout.png" alt="" class="size-5 inline" />
 								</div>
 								<input

@@ -16,6 +16,7 @@
 	let { data } = $props();
 	let latitude = $state<number>(0);
 	let longitude = $state<number>(0);
+	let altitude = $state<number | null>(0);
 	let accuracy = $state<number>(0);
 	var markerDangerIcon = $state<Icon>();
 	var markerSafeIcon = $state<Icon>();
@@ -38,6 +39,7 @@
 				);
 				latitude = pos.coords.latitude;
 				longitude = pos.coords.longitude;
+				altitude = pos.coords.altitude;
 				accuracy = pos.coords.accuracy;
 				console.log(pos.coords.accuracy);
 			},
@@ -73,7 +75,8 @@
 	<div class="flex flex-col items-center text-2xl px-10 gap-3 bg-white bg-opacity-70 py-10">
 		<div class="text-3xl w-full font-bold text-center mb-7">
 			Current Situation: {#if isDanger}
-				<span class="text-error">Dangerous</span>
+				<span class="text-5xl text-error animate-blink">Dangerous</span>
+				<audio src="/sounds/warning.mp3" loop autoplay></audio>
 			{:else if isInSchool}
 				<span class="text-success">Safe</span>
 			{:else}
@@ -85,9 +88,9 @@
 		>
 			<div class="flex flex-row items-center gap-3 font-semibold">
 				<img src="latitude.png" alt="" class="inline size-10" />
-				Latitude
+				Latitude, Altitude
 			</div>
-			<div>{latitude.toFixed(4)}</div>
+			<div>{latitude.toFixed(4)} and {altitude?.toFixed(4)}</div>
 		</div>
 
 		<div

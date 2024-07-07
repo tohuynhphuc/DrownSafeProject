@@ -85,7 +85,10 @@
 				There are no Students in danger
 			</div>
 		{:else}
-			<div class="text-6xl w-full font-bold text-center text-error">STUDENTS ARE IN DANGER</div>
+			<div class="text-6xl w-full font-bold text-center text-error animate-blink">
+				STUDENTS ARE IN DANGER
+			</div>
+			<audio src="/sounds/warning.mp3" loop autoplay></audio>
 			<ul class="pl-10 mt-5 leading-relaxed list-['>_']">
 				{#each dangerStudents as student}
 					<li class="text-error text-5xl">{student}</li>
