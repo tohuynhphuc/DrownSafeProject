@@ -61,16 +61,16 @@ export const actions: Actions = {
 			);
 
 			let transporter = nodemailer.createTransport({
-				service: "gmail",
+				service: process.env.SERVICE,
 				auth: {
-					user: "rizlineplayer@gmail.com",
+					user: process.env.EMAIL,
 					pass: process.env.EMAIL_PASSWORD
 				}
 			});
 			console.log(process.env.EMAIL_PASSWORD);
 
 			let mailOptions = {
-				from: "phuctohuynh@outlook.com",
+				from: process.env.EMAIL,
 				to: user.email,
 				subject: "[DrownSafe] - Reset Password",
 				html: `Please click on the link below to reset your password. If you didn't request this, please ignore this email and move on with your life.<br><br><a href="https://drownsafe.20050703.xyz/forget/${tokenID}">Click here!</a><br><br>Or you can copy the link and paste it into your browser: https://drownsafe.20050703.xyz/forget/${tokenID}`
