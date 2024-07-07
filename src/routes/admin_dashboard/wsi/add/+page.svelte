@@ -50,7 +50,11 @@
 			<input type="submit" class="w-full btn btn-primary" />
 		</div>
 		{#if $page.form?.message}
-			<div class="md:col-span-2 text-error py-2 text-center">
+			<div
+				class="md:col-span-2 {200 <= $page.status && $page.status <= 299
+					? 'text-success'
+					: 'text-error'} font-semibold py-2 text-center"
+			>
 				{$page.form?.message}
 			</div>
 		{/if}

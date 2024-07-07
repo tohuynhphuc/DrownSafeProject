@@ -42,7 +42,11 @@
 			</div>
 			<input type="submit" class="btn btn-primary w-full" value="Log In" />
 			{#if $page.form?.message}
-				<div class="xl:col-span-2 text-error py-2 text-center">
+				<div
+					class="xl:col-span-2 {200 <= $page.status && $page.status <= 299
+						? 'text-success'
+						: 'text-error'} font-semibold py-2 text-center"
+				>
 					{$page.form?.message}
 				</div>
 			{/if}
