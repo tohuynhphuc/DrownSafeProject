@@ -53,6 +53,7 @@ export const actions: Actions = {
 
 			if (entry) {
 				db.prepare("UPDATE user SET password = ? WHERE id = ?").run(hashedPassword, entry.userID);
+				db.prepare("DELETE from token WHERE tokenHash = ?").run(tokenHash);
 				return {
 					message:
 						"Password Updated Successfully. You will be redirected to the Main Dashboard shortly"

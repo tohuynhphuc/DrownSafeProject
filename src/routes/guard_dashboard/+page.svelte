@@ -98,7 +98,7 @@
 				zoom: window.screen.width < 1280 ? 16 : 17
 			}}
 		>
-			<TileLayer urlTemplate={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
+			<TileLayer url={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
 			{#each studentCoords as studentCoord}
 				<LayerGroup>
 					{#if dangerStudents.includes(studentCoord.username)}
