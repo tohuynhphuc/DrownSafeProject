@@ -3,6 +3,8 @@ import { fail, redirect } from "@sveltejs/kit";
 import "dotenv/config";
 
 import { password_length } from "$lib/const";
+import { sha256 } from "oslo/crypto";
+import { encodeHex } from "oslo/encoding";
 import { Argon2id } from "oslo/password";
 import type { Actions, PageServerLoad } from "./$types";
 
@@ -10,10 +12,11 @@ export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
 		return redirect(302, "/main_dashboard");
 	}
+	const tokenHash = encodeHex(await sha256(new TextEncoder().encode(event.params.token)));
 
 	const entry = db
 		.prepare("SELECT * FROM token WHERE tokenHash = ?")
-		.get(event.params.token) as DatabaseToken;
+		.get(tokenHash) as DatabaseToken;
 
 	if (entry) {
 		const user = db.prepare("SELECT * FROM user WHERE id = ?").get(entry.userID) as DatabaseUser;
@@ -43,9 +46,10 @@ export const actions: Actions = {
 		const hashedPassword = await new Argon2id().hash(password);
 
 		try {
+			const tokenHash = encodeHex(await sha256(new TextEncoder().encode(event.params.token)));
 			const entry = db
 				.prepare("SELECT * FROM token WHERE tokenHash = ?")
-				.get(event.params.token) as DatabaseToken;
+				.get(tokenHash) as DatabaseToken;
 
 			if (entry) {
 				db.prepare("UPDATE user SET password = ? WHERE id = ?").run(hashedPassword, entry.userID);
