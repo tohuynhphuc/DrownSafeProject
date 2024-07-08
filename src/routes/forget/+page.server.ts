@@ -60,7 +60,7 @@ export const actions: Actions = {
 				createDate(new TimeSpan(1, "h")).getTime()
 			);
 
-			let transporter = nodemailer.createTransport({
+			const transporter = nodemailer.createTransport({
 				service: process.env.SERVICE,
 				auth: {
 					user: process.env.EMAIL,
@@ -69,7 +69,7 @@ export const actions: Actions = {
 			});
 			console.log(process.env.EMAIL_PASSWORD);
 
-			let mailOptions = {
+			const mailOptions = {
 				from: process.env.EMAIL,
 				to: user.email,
 				subject: "[DrownSafe] - Reset Password",

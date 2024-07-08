@@ -11,6 +11,10 @@ html {
 	color: red;
 }
 
+body {
+	@apply min-h-[100vh] flex flex-col;
+}
+
 @keyframes blink {
 	0% {
 		opacity: 0;

@@ -79,7 +79,7 @@
 			Current Situation: {#if isDanger}
 				<!--Change to Test the Sound system-->
 				<span class="text-success">Safe</span>
-			{:else if isInSchool}
+			{:else if true}
 				<span class="text-5xl text-error animate-blink">Dangerous</span>
 				<audio src="/sounds/warning.mp3" loop autoplay></audio>
 			{:else}

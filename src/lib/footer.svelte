@@ -1,4 +1,4 @@
-<div class="bg-customfooter text-white">
+<div class="bg-customfooter text-white mt-auto">
 	<div class="text-xl py-14 px-5 xl:px-20">
 		<div class="flex flex-col xl:flex-row justify-between items-start gap-y-10">
 			<div class="flex flex-row items-center gap-2">

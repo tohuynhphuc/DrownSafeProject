@@ -11,6 +11,12 @@ export interface DatabaseUser {
 	email: string;
 }
 
+export interface DatabaseToken {
+	userID: string;
+	expiresAt: number;
+	tokenHash: string;
+}
+
 export interface DatabaseWSI {
 	id: string;
 	title: string;
