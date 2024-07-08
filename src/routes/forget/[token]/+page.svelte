@@ -9,7 +9,7 @@
 	let { data } = $props();
 
 	$effect(() => {
-		$page.form.message;
+		$page.form?.message;
 		$page.status;
 		untrack(() => {
 			if (200 <= $page.status && $page.status <= 299) {
