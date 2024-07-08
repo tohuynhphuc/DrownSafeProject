@@ -53,9 +53,6 @@ export const actions: Actions = {
 
 			if (entry) {
 				db.prepare("UPDATE user SET password = ? WHERE id = ?").run(hashedPassword, entry.userID);
-				setTimeout(() => {
-					redirect(302, "/login");
-				}, 3000);
 				return {
 					message:
 						"Password Updated Successfully. You will be redirected to the Main Dashboard shortly"

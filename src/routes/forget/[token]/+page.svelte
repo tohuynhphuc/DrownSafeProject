@@ -4,8 +4,21 @@
 	import Background from "$lib/background.svelte";
 	import Emptynavbar from "$lib/emptynavbar.svelte";
 	import Footer from "$lib/footer.svelte";
+	import { untrack } from "svelte";
 
 	let { data } = $props();
+
+	$effect(() => {
+		$page.form.message;
+		$page.status;
+		untrack(() => {
+			if (200 <= $page.status && $page.status <= 299) {
+				setTimeout(() => {
+					location.href = "/login";
+				}, 3000);
+			}
+		});
+	});
 </script>
 
 <svelte:head>
