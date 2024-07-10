@@ -86,7 +86,7 @@
 			{/if}
 		</div>
 		<div
-			class="flex flex-row items-center justify-between max-w-[30rem] w-full bg-red-100 rounded-3xl p-6"
+			class="flex flex-col xl:flex-row items-center justify-start xl:justify-between max-w-[30rem] w-full bg-red-100 rounded-3xl p-6"
 		>
 			<div class="flex flex-row items-center gap-3 font-semibold">
 				<img src="/latitude.png" alt="" class="inline size-10" />
@@ -96,7 +96,7 @@
 		</div>
 
 		<div
-			class="flex flex-row items-center justify-between max-w-[30rem] w-full bg-yellow-100 rounded-3xl p-6"
+			class="flex flex-col xl:flex-row items-center justify-start xl:justify-between max-w-[30rem] w-full bg-yellow-100 rounded-3xl p-6"
 		>
 			<div class="flex flex-row items-center gap-3 font-semibold">
 				<img src="/latitude.png" alt="" class="inline size-10" />
@@ -106,7 +106,7 @@
 		</div>
 
 		<div
-			class="flex flex-row items-center justify-between max-w-[30rem] w-full bg-green-100 rounded-3xl p-6"
+			class="flex flex-col xl:flex-row items-center justify-start xl:justify-between max-w-[30rem] w-full bg-green-100 rounded-3xl p-6"
 		>
 			<div class="flex flex-row items-center gap-3 font-semibold">
 				<img src="/latitude.png" alt="" class="inline size-10" />

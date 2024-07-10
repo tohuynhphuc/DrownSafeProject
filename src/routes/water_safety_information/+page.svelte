@@ -11,7 +11,7 @@
 </svelte:head>
 
 <Background></Background>
-<Dashboardnavbar username={data.username}></Dashboardnavbar>
+<Dashboardnavbar username={data.name}></Dashboardnavbar>
 
 <div class="flex flex-col my-5 gap-5 mx-20">
 	{#each data.wsi as einWSI}
