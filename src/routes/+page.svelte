@@ -9,26 +9,8 @@
 	<title>DrownSafe</title>
 </svelte:head>
 
-<Dashboardnavbar username={data.name}></Dashboardnavbar>
+<Dashboardnavbar username={data.username} name={data.name}></Dashboardnavbar>
 
-<!--
-<div class="text-xl py-7 px-5 xl:px-20">
-	<div class="flex flex-row justify-between items-center">
-		<div class="flex flex-row items-center gap-2">
-			<img src="/favicon.png" alt="Icon" class="size-10" />
-			<div><b>DROWNSAFE</b></div>
-		</div>
-		<div class="flex gap-1 items-center xl:gap-10">
-			<a href="/register">Sign Up</a>
-			<a
-				href="/login"
-				class="btn text-xl bg-customblue text-white w-24 h-16 rounded-3xl hover:bg-custombluedark xl:w-44"
-				>Log in</a
-			>
-		</div>
-	</div>
-</div>
--->
 <div class="bg-customlav">
 	<div class="flex flex-col justify-between gap-5 text-xl py-14 px-5 xl:px-20 xl:flex-row">
 		<div class="flex flex-col gap-10">

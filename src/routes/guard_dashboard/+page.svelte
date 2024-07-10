@@ -70,7 +70,7 @@
 </svelte:head>
 
 <Background></Background>
-<Dashboardnavbar username={data.name}></Dashboardnavbar>
+<Dashboardnavbar username={data.username} name={data.name}></Dashboardnavbar>
 
 <div class="grid grid-cols-1 xl:grid-cols-[1fr_62.91%] justify-between">
 	<div

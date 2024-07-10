@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { admin } from "./const";
-	let { username }: { username: string | undefined } = $props();
+	let { username, name }: { username: string | undefined; name: string | undefined } = $props();
 </script>
 
 <div class="text-xl py-7 px-7 bg-blue-100 md:px-20 z-50 bg-opacity-100">
@@ -9,14 +9,14 @@
 			<img src="/favicon.png" alt="Icon" class="size-16 sm:size-12 z-50" />
 			<div class="hidden sm:block text-2xl"><b>DROWNSAFE</b></div>
 		</a>
-		{#if username}
+		{#if name}
 			<div class="flex flex-col items-end z-50">
 				<div class="peer z-50">
 					<div
 						class="flex flex-row items-end justify-center gap-3 py-2 pl-4 pr-6 border-2 border-red-500 shadow-xl rounded-2xl bg-blue-300 hover:bg-blue-400 z-50"
 					>
 						<img src="/avatar.png" alt="" class="size-8 z-50" />
-						Hello {username}
+						Hello {name}
 						<img src="/down.png" alt="" class="size-3 mb-[0.36rem] z-50" />
 					</div>
 				</div>

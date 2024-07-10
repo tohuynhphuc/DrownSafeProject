@@ -12,7 +12,7 @@
 	<title>Add Information - DrownSafe</title>
 </svelte:head>
 
-<Dashboardnavbar username={data.name}></Dashboardnavbar>
+<Dashboardnavbar username={data.username} name={data.name}></Dashboardnavbar>
 <Background></Background>
 
 <div class="mx-7 md:mx-20 my-7 bg-white bg-opacity-70 text-xl p-10 font-semibold rounded-3xl">

@@ -24,7 +24,7 @@
 	<title>Modify Information - DrownSafe</title>
 </svelte:head>
 
-<Dashboardnavbar username={data.name}></Dashboardnavbar>
+<Dashboardnavbar username={data.username} name={data.name}></Dashboardnavbar>
 <Background></Background>
 
 <div

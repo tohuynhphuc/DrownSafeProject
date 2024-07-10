@@ -7,7 +7,7 @@
 </script>
 
 <Background></Background>
-<Dashboardnavbar username={data.name}></Dashboardnavbar>
+<Dashboardnavbar username={data.username} name={data.name}></Dashboardnavbar>
 {#if data.wsi}
 	<div class="flex flex-col justify-center items-center px-20">
 		<div

@@ -65,13 +65,7 @@
 </svelte:head>
 
 <Background></Background>
-<Dashboardnavbar username={data.name}></Dashboardnavbar>
-
-<!-- <div class="">
-	Latitude: {latitude} <br />
-	Longitude: {longitude} <br />
-	Accuracy: {accuracy} <br />
-</div> -->
+<Dashboardnavbar username={data.username} name={data.name}></Dashboardnavbar>
 
 <div class="grid grid-cols-1 xl:grid-cols-[1fr_62.91%] justify-between">
 	<div class="flex flex-col items-center text-2xl px-10 gap-3 bg-white bg-opacity-70 py-10">
