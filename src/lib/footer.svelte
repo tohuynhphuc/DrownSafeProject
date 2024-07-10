@@ -13,8 +13,7 @@
 					<div>Ring road 4, Quarter 4, Thoi Hoa Ward, Ben Cat City, Binh Duong Province</div>
 				</div>
 				<div class="flex flex-row items-center gap-2">
-					<img src="/phone.svg" alt="" class="size-6" />(0274) 222 0990 -
-					<img src="/fax.svg" alt="" class="size-6" />(0274) 222 0980
+					<img src="/phone.svg" alt="" class="size-6" />(0274) 222 0990
 				</div>
 				<div class="flex flex-row items-center gap-2">
 					<img src="/map.svg" alt="" class="size-6" />
