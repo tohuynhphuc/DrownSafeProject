@@ -9,11 +9,11 @@
 <Background></Background>
 <Dashboardnavbar username={data.username} name={data.name}></Dashboardnavbar>
 {#if data.wsi}
-	<div class="flex flex-col justify-center items-center px-20">
+	<div class="flex flex-col justify-center items-center mx-5 xl:mx-20">
 		<div
-			class="flex flex-col items-center justify-center gap-10 bg-white bg-opacity-80 my-14 py-14 px-14 rounded-2xl"
+			class="flex flex-col items-center justify-center w-full gap-10 bg-white bg-opacity-80 my-14 py-7 xl:py-14 px-7 xl:px-14 rounded-2xl"
 		>
-			<div class="flex justify-start gap-10 w-full">
+			<div class="flex flex-col xl:flex-row justify-start gap-3 xl:gap-10 w-full">
 				<img src="/api/wsi_image/{data.wsi.id}" class="size-32 object-cover" alt="" />
 				<div class="flex flex-col gap-3">
 					<div class="text-4xl font-bold">{data.wsi.title}</div>

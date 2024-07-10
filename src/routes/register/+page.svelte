@@ -62,17 +62,16 @@
 			<div class="xl:col-span-2 flex items-center justify-center">
 				<input type="submit" class="btn btn-primary w-[13.5rem]" value="Register" />
 			</div>
-
-			{#if $page.form?.message}
-				<div
-					class="xl:col-span-2 {200 <= $page.status && $page.status <= 299
-						? 'text-success'
-						: 'text-error'} font-semibold py-2 text-center"
-				>
-					{$page.form?.message}
-				</div>
-			{/if}
 		</form>
+		{#if $page.form?.message}
+			<div
+				class="xl:col-span-2 {200 <= $page.status && $page.status <= 299
+					? 'text-success'
+					: 'text-error'} font-semibold py-2 text-wrap px-10 text-center"
+			>
+				{$page.form?.message}
+			</div>
+		{/if}
 	</div>
 </div>
 

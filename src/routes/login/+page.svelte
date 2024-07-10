@@ -41,16 +41,16 @@
 				<a href="/register" class="link link-error"> Register now</a>
 			</div>
 			<input type="submit" class="btn btn-primary w-full" value="Log In" />
-			{#if $page.form?.message}
-				<div
-					class="xl:col-span-2 {200 <= $page.status && $page.status <= 299
-						? 'text-success'
-						: 'text-error'} font-semibold py-2 text-center"
-				>
-					{$page.form?.message}
-				</div>
-			{/if}
 		</form>
+		{#if $page.form?.message}
+			<div
+				class="xl:col-span-2 {200 <= $page.status && $page.status <= 299
+					? 'text-success'
+					: 'text-error'} font-semibold py-2 text-wrap px-10 text-center"
+			>
+				{$page.form?.message}
+			</div>
+		{/if}
 	</div>
 </div>
 
