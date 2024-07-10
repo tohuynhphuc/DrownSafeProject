@@ -16,8 +16,6 @@
 	let { data } = $props();
 	let latitude = $state<number>(0);
 	let longitude = $state<number>(0);
-	let altitude = $state<number | null>(0);
-	let altitudeA = $state<number | null>(0);
 	let accuracy = $state<number>(0);
 	var markerDangerIcon = $state<Icon>();
 	var markerSafeIcon = $state<Icon>();
@@ -40,8 +38,6 @@
 				);
 				latitude = pos.coords.latitude;
 				longitude = pos.coords.longitude;
-				altitude = pos.coords.altitude;
-				altitudeA = pos.coords.altitudeAccuracy;
 				accuracy = pos.coords.accuracy;
 				console.log(pos.coords.accuracy);
 			},
