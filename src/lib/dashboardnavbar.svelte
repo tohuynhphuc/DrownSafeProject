@@ -82,7 +82,7 @@
 				<a
 					href="/login"
 					class="btn text-xl bg-customblue text-white w-24 h-16 rounded-3xl hover:bg-custombluedark xl:w-44 z-50"
-					>Log in</a
+					>Log In</a
 				>
 			</div>
 		{/if}

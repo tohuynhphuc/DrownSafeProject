@@ -17,7 +17,7 @@
 	<div
 		class="flex flex-col items-center justify-center gap-6 border-secondary bg-white bg-opacity-70 border-2 w-[20rem] py-10 rounded-2xl"
 	>
-		<div class="text-5xl text-center"><b>Login</b></div>
+		<div class="text-5xl text-center"><b>Log In</b></div>
 		<form use:enhance method="post" class="flex flex-col gap-6 px-5">
 			<div>
 				<div class="text-xl">USERNAME</div>

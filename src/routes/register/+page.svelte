@@ -57,7 +57,7 @@
 			</div>
 			<div class="xl:col-span-2 flex flex-col items-center justify-center gap-1">
 				<div>Already have an account?</div>
-				<a href="/login" class="link link-error"> Login here</a>
+				<a href="/login" class="link link-error"> Log In here</a>
 			</div>
 			<div class="xl:col-span-2 flex items-center justify-center">
 				<input type="submit" class="btn btn-primary w-[13.5rem]" value="Register" />
