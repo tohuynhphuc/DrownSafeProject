@@ -35,8 +35,8 @@
 		<iframe
 			width="784"
 			height="441"
-			src="https://www.youtube.com/embed/wHaZosAqTx4?si=yrySs3oHKlggoGPd"
-			title="YouTube video player"
+			src="https://www.youtube.com/embed/DMz_rT_3TLI?si=yrySs3oHKlggoGPd"
+			title="DrownSafe Demo Video"
 			frameborder="0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 			referrerpolicy="strict-origin-when-cross-origin"
