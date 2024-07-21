@@ -32,13 +32,16 @@
 
 <div class="bg-customgreen">
 	<div class="flex flex-col items-center justify-center py-14 px-5 xl:px-20 xl:flex-row">
-		<!-- svelte-ignore a11y_media_has_caption -->
-		<!-- svelte-ignore a11y_autofocus -->
-		<video
-			src="/Presentation - To Huynh Phuc - 10423093.mkv"
-			class="flex items-center justify-center w-[90%] xl:w-[60%]"
-			controls
-		></video>
+		<iframe
+			width="560"
+			height="315"
+			src="https://www.youtube.com/embed/wHaZosAqTx4?si=yrySs3oHKlggoGPd"
+			title="YouTube video player"
+			frameborder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			referrerpolicy="strict-origin-when-cross-origin"
+			allowfullscreen
+		></iframe>
 	</div>
 </div>
 
