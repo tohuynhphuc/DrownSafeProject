@@ -33,8 +33,8 @@
 <div class="bg-customgreen">
 	<div class="flex flex-col items-center justify-center py-14 px-5 xl:px-20 xl:flex-row">
 		<iframe
-			width="560"
-			height="315"
+			width="784"
+			height="441"
 			src="https://www.youtube.com/embed/wHaZosAqTx4?si=yrySs3oHKlggoGPd"
 			title="YouTube video player"
 			frameborder="0"
