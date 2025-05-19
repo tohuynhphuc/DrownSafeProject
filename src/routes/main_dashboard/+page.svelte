@@ -1,17 +1,14 @@
 <script lang="ts">
 	import Background from '$lib/background.svelte';
-	import {
-		dangerZones,
-		markerDangerOptions,
-		markerSafeOptions,
-		socket,
-		vguBoundingBox
-	} from '$lib/const';
+	import { dangerZones, markerDangerOptions, markerSafeOptions, vguBoundingBox } from '$lib/const';
 	import Dashboardnavbar from '$lib/dashboardnavbar.svelte';
 	import Footer from '$lib/footer.svelte';
 	import { isPointInPolygon } from '$lib/functions.js';
+	import type { data_schema } from '$lib/types.js';
 	import { icon, Icon } from 'leaflet';
+	import { pack } from 'msgpackr';
 	import { LayerGroup, Map, Marker, Popup, TileLayer } from 'sveaflet';
+	import { z } from 'zod/v4-mini';
 
 	let { data } = $props();
 	let latitude = $state<number>(0);
@@ -26,20 +23,23 @@
 		accuracy <= 40 && isPointInPolygon(latitude, longitude, vguBoundingBox)
 	);
 
+	let ws: WebSocket;
+
 	$effect(() => {
+		ws = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/ws`);
+
 		navigator.geolocation.watchPosition(
 			(pos) => {
-				socket.emit(
-					'gps',
-					data.name,
-					pos.coords.longitude,
-					pos.coords.latitude,
-					pos.coords.accuracy
-				);
+				send({
+					username: data.name,
+					longitude: pos.coords.longitude,
+					latitude: pos.coords.latitude,
+					accuracy: pos.coords.accuracy
+				});
+
 				latitude = pos.coords.latitude;
 				longitude = pos.coords.longitude;
 				accuracy = pos.coords.accuracy;
-				console.log(pos.coords.accuracy);
 			},
 			(err) => {
 				console.log('Error: ', err);
@@ -54,6 +54,10 @@
 		markerDangerIcon = icon(markerDangerOptions);
 		markerSafeIcon = icon(markerSafeOptions);
 	});
+
+	function send(data: z.infer<typeof data_schema>) {
+		ws.send(pack(data));
+	}
 </script>
 
 <svelte:head>

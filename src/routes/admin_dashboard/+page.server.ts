@@ -13,7 +13,6 @@ export const load: PageServerLoad = async (event) => {
 		username: event.locals.user.username,
 		name: event.locals.user.name,
 		email: event.locals.user.email,
-		studentID: event.locals.user.studentID,
-		sessionId: event.locals.session?.id
+		studentID: event.locals.user.studentID
 	};
 };

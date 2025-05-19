@@ -4,6 +4,7 @@
 	import Background from '$lib/background.svelte';
 	import Dashboardnavbar from '$lib/dashboardnavbar.svelte';
 	import Footer from '$lib/footer.svelte';
+	import { z } from 'zod/v4-mini';
 
 	let { data } = $props();
 
@@ -12,8 +13,17 @@
 	let content = $state('');
 	let selection = $state('');
 
+	const schema = z.object({
+		wsi: z.object({
+			id: z.string(),
+			title: z.string(),
+			author: z.string(),
+			content: z.string()
+		})
+	});
+
 	async function getWSI() {
-		const result = await (await fetch(`/api/wsi_get/${selection}`)).json();
+		const result = schema.parse(await (await fetch(`/api/wsi_get/${selection}`)).json());
 		title = result.wsi.title ?? '';
 		author = result.wsi.author ?? '';
 		content = result.wsi.content ?? '';

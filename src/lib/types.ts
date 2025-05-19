@@ -1,13 +1,10 @@
-// * Import
+import { z } from 'zod/v4-mini';
 
-// * Export
-export interface client_server {
-	gps(username: string, longtitude: number, latitude: number, accuracy: number): void;
-	login(sessionId?: string): void;
-}
+export const data_schema = z.object({
+	username: z.string(),
+	longitude: z.number(),
+	latitude: z.number(),
+	accuracy: z.number()
+});
 
-export interface server_client {
-	gps(username: string, longtitude: number, latitude: number, accuracy: number): void;
-}
-
-export interface data {}
+export type data = z.infer<typeof data_schema>;
