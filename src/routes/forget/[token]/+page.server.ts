@@ -58,6 +58,7 @@ export const actions: Actions = {
 					entry.userID
 				);
 				db.prepare<string>('DELETE from token WHERE tokenHash = ?').run(tokenHash);
+
 				return {
 					message:
 						'Password Updated Successfully. You will be redirected to the Main Dashboard shortly'

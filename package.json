@@ -1,7 +1,7 @@
 {
 	"name": "drownsafeproject",
 	"private": true,
-	"version": "2025.05.19.1",
+	"version": "2025.05.19.2",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",

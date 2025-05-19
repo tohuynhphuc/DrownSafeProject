@@ -8,7 +8,7 @@
 	const { data } = $props();
 
 	$effect(() => {
-		if (page.form.message && 200 <= page.status && page.status <= 299) {
+		if (page.form?.message && 200 <= page.status && page.status <= 299) {
 			setTimeout(() => {
 				location.href = '/login';
 			}, 3000);
