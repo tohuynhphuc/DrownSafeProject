@@ -7,22 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@types/nodemailer':
-        specifier: ^6.4.17
-        version: 6.4.17
-      dotenv:
-        specifier: ^16.5.0
-        version: 16.5.0
-      leaflet:
-        specifier: ^1.9.4
-        version: 1.9.4
-      nodemailer:
-        specifier: ^7.0.3
-        version: 7.0.3
-      sveaflet:
-        specifier: ^0.1.4
-        version: 0.1.4(@algolia/client-search@5.25.0)(leaflet@1.9.4)(search-insights@2.17.3)(svelte@5.30.2)
     devDependencies:
       '@lucia-auth/adapter-sqlite':
         specifier: ^3.0.2
@@ -45,6 +29,9 @@ importers:
       '@types/leaflet':
         specifier: ^1.9.17
         version: 1.9.17
+      '@types/nodemailer':
+        specifier: ^6.4.17
+        version: 6.4.17
       autoprefixer:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.3)
@@ -54,6 +41,9 @@ importers:
       daisyui:
         specifier: ^5.0.35
         version: 5.0.35
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
       eslint:
         specifier: ^9.27.0
         version: 9.27.0
@@ -66,9 +56,15 @@ importers:
       globals:
         specifier: ^16.1.0
         version: 16.1.0
+      leaflet:
+        specifier: ^1.9.4
+        version: 1.9.4
       lucia:
         specifier: ^3.2.2
         version: 3.2.2
+      nodemailer:
+        specifier: ^7.0.3
+        version: 7.0.3
       oslo:
         specifier: ^1.2.1
         version: 1.2.1
@@ -90,6 +86,9 @@ importers:
       socket.io-client:
         specifier: ^4.8.1
         version: 4.8.1
+      sveaflet:
+        specifier: ^0.1.4
+        version: 0.1.4(@algolia/client-search@5.25.0)(leaflet@1.9.4)(search-insights@2.17.3)(svelte@5.30.2)
       svelte:
         specifier: ^5.30.2
         version: 5.30.2

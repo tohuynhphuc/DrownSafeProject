@@ -1,7 +1,7 @@
 {
 	"name": "drownsafeproject",
 	"private": true,
-	"version": "2025.05.18.1",
+	"version": "2025.05.18.2",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -19,14 +19,18 @@
 		"@types/better-sqlite3": "^7.6.13",
 		"@types/eslint": "^9.6.1",
 		"@types/leaflet": "^1.9.17",
+		"@types/nodemailer": "^6.4.17",
 		"autoprefixer": "^10.4.21",
 		"better-sqlite3": "^11.10.0",
 		"daisyui": "^5.0.35",
+		"dotenv": "^16.5.0",
 		"eslint": "^9.27.0",
 		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-svelte": "^3.8.1",
 		"globals": "^16.1.0",
+		"leaflet": "^1.9.4",
 		"lucia": "^3.2.2",
+		"nodemailer": "^7.0.3",
 		"oslo": "^1.2.1",
 		"postcss": "^8.5.3",
 		"prettier": "^3.5.3",
@@ -34,6 +38,7 @@
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"socket.io": "^4.8.1",
 		"socket.io-client": "^4.8.1",
+		"sveaflet": "^0.1.4",
 		"svelte": "^5.30.2",
 		"svelte-check": "^4.2.1",
 		"tailwindcss": "^4.1.7",
@@ -43,13 +48,6 @@
 		"vite": "^6.3.5"
 	},
 	"type": "module",
-	"dependencies": {
-		"@types/nodemailer": "^6.4.17",
-		"dotenv": "^16.5.0",
-		"leaflet": "^1.9.4",
-		"nodemailer": "^7.0.3",
-		"sveaflet": "^0.1.4"
-	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
 			"better-sqlite3",

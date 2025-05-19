@@ -24,9 +24,20 @@ export const actions: Actions = {
 		const studentID = formData.get('studentID');
 		const email = formData.get('email');
 		const dob = formData.get('dob');
+
 		// basic check
 		if (
 			typeof username !== 'string' ||
+			typeof password !== 'string' ||
+			typeof name !== 'string' ||
+			typeof studentID !== 'string' ||
+			typeof email !== 'string' ||
+			typeof dob !== 'string'
+		) {
+			return fail(400, { message: 'Invalid data' });
+		}
+
+		if (
 			username.length < username_length[0] ||
 			username.length > username_length[1] ||
 			!username_regex.test(username)
@@ -35,11 +46,7 @@ export const actions: Actions = {
 				message: `Username must be ${username_length[0]}-${username_length[1]} characters long and only consist of letters, numbers, dashes, and underscores`
 			});
 		}
-		if (
-			typeof password !== 'string' ||
-			password.length < password_length[0] ||
-			password.length > password_length[1]
-		) {
+		if (password.length < password_length[0] || password.length > password_length[1]) {
 			return fail(400, {
 				message: `Password must be ${password_length[0]}-${password_length[1]} characters long`
 			});
@@ -49,7 +56,7 @@ export const actions: Actions = {
 		const userId = generateId(15);
 
 		try {
-			db.prepare(
+			db.prepare<[string, string, string, string, string, string, string]>(
 				'INSERT INTO user (id, username, password, name, studentID, email, dob) VALUES(?, ?, ?, ?, ?, ?, ?)'
 			).run(userId, username, hashedPassword, name, studentID, email, dob);
 

@@ -103,7 +103,7 @@
 				<LayerGroup>
 					{#if dangerStudents.includes(studentCoord.username)}
 						<Marker
-							latlng={[studentCoord.latitude, studentCoord.longtitude]}
+							latLng={[studentCoord.latitude, studentCoord.longtitude]}
 							options={{
 								icon: markerDangerIcon
 							}}
@@ -112,7 +112,7 @@
 						</Marker>
 					{:else}
 						<Marker
-							latlng={[studentCoord.latitude, studentCoord.longtitude]}
+							latLng={[studentCoord.latitude, studentCoord.longtitude]}
 							options={{
 								icon: markerSafeIcon
 							}}

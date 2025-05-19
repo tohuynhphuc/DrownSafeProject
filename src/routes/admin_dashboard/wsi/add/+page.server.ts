@@ -38,7 +38,7 @@ export const actions: Actions = {
 		}
 
 		try {
-			db.prepare(
+			db.prepare<[string, string, string, string, Buffer, string]>(
 				'INSERT INTO waterInfo (id, title, author, mimetype, data, content) VALUES(?, ?, ?, ?, ?, ?)'
 			).run(
 				Date.now().toString(),

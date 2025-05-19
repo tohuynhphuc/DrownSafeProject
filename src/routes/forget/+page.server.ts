@@ -35,12 +35,17 @@ export const actions: Actions = {
 
 		if (username && email) {
 			user = db
-				.prepare('SELECT * FROM user WHERE username = ? AND email = ?')
-				.get(username, email) as DatabaseUser;
+				.prepare<
+					[string, string],
+					DatabaseUser
+				>('SELECT * FROM user WHERE username = ? AND email = ?')
+				.get(username, email);
 		} else if (username) {
-			user = db.prepare('SELECT * FROM user WHERE username = ?').get(username) as DatabaseUser;
+			user = db
+				.prepare<string, DatabaseUser>('SELECT * FROM user WHERE username = ?')
+				.get(username);
 		} else if (email) {
-			user = db.prepare('SELECT * FROM user WHERE email = ?').get(email) as DatabaseUser;
+			user = db.prepare<string, DatabaseUser>('SELECT * FROM user WHERE email = ?').get(email);
 		}
 
 		if (!user) {
@@ -50,15 +55,13 @@ export const actions: Actions = {
 		}
 
 		try {
-			db.prepare('DELETE FROM token WHERE userID = ?').run(user.id);
+			db.prepare<string>('DELETE FROM token WHERE userID = ?').run(user.id);
 
 			const tokenID = generateIdFromEntropySize(25);
 			const tokenHash = encodeHex(await sha256(new TextEncoder().encode(tokenID)));
-			db.prepare('INSERT INTO token (userID, tokenHash, expiresAt) VALUES (?, ?, ?)').run(
-				user.id,
-				tokenHash,
-				createDate(new TimeSpan(1, 'h')).getTime()
-			);
+			db.prepare<[string, string, number]>(
+				'INSERT INTO token (userID, tokenHash, expiresAt) VALUES (?, ?, ?)'
+			).run(user.id, tokenHash, createDate(new TimeSpan(1, 'h')).getTime());
 
 			const transporter = nodemailer.createTransport({
 				service: process.env.SERVICE,

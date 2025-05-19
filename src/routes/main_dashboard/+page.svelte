@@ -117,7 +117,7 @@
 				<LayerGroup>
 					{#if isDanger}
 						<Marker
-							latlng={[latitude, longitude]}
+							latLng={[latitude, longitude]}
 							options={{
 								icon: markerDangerIcon
 							}}
@@ -126,7 +126,7 @@
 						</Marker>
 					{:else}
 						<Marker
-							latlng={[latitude, longitude]}
+							latLng={[latitude, longitude]}
 							options={{
 								icon: markerSafeIcon
 							}}

@@ -8,9 +8,9 @@ export const load: PageServerLoad = async (event) => {
 		return redirect(302, '/login');
 	}
 
-	const wsi = db.prepare('SELECT * FROM waterInfo WHERE id = ?').get(event.params.id) as
-		| DatabaseWSI
-		| undefined;
+	const wsi = db
+		.prepare<string, DatabaseWSI>('SELECT * FROM waterInfo WHERE id = ?')
+		.get(event.params.id);
 
 	return {
 		id: event.locals.user.id,

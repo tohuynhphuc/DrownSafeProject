@@ -9,7 +9,7 @@ export const load: PageServerLoad = async (event) => {
 		return redirect(302, '/login');
 	}
 
-	const wsi = db.prepare('SELECT * FROM waterInfo').all() as DatabaseWSI[];
+	const wsi = db.prepare<[], DatabaseWSI>('SELECT * FROM waterInfo').all();
 
 	return {
 		id: event.locals.user.id,
@@ -46,18 +46,13 @@ export const actions: Actions = {
 		}
 
 		try {
-			db.prepare('UPDATE waterInfo SET title = ?, author = ?, content = ? WHERE id = ?').run(
-				title,
-				author,
-				content,
-				id
-			);
+			db.prepare<[string, string, string, string]>(
+				'UPDATE waterInfo SET title = ?, author = ?, content = ? WHERE id = ?'
+			).run(title, author, content, id);
 			if (image instanceof File && image.size > 0) {
-				db.prepare('UPDATE waterInfo SET mimetype = ?, data = ? WHERE id = ?').run(
-					image?.type,
-					Buffer.from(await image?.arrayBuffer()),
-					id
-				);
+				db.prepare<[string, Buffer, string]>(
+					'UPDATE waterInfo SET mimetype = ?, data = ? WHERE id = ?'
+				).run(image?.type, Buffer.from(await image?.arrayBuffer()), id);
 			}
 			return { message: 'Success!' };
 		} catch (e) {
@@ -77,7 +72,7 @@ export const actions: Actions = {
 		}
 
 		try {
-			db.prepare('DELETE FROM waterInfo WHERE id = ?').run(id);
+			db.prepare<string>('DELETE FROM waterInfo WHERE id = ?').run(id);
 			return { message: 'Success!' };
 		} catch (e) {
 			console.log(e);

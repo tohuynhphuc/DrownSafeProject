@@ -47,9 +47,9 @@ export const actions: Actions = {
 			});
 		}
 
-		const existingUser = db.prepare('SELECT * FROM user WHERE username = ?').get(username) as
-			| DatabaseUser
-			| undefined;
+		const existingUser = db
+			.prepare<string, DatabaseUser>('SELECT * FROM user WHERE username = ?')
+			.get(username);
 		if (!existingUser) {
 			return fail(400, {
 				message: 'Incorrect username or password'

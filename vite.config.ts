@@ -11,5 +11,9 @@ export default defineConfig({
 				server(httpServer);
 			}
 		}
-	]
+	],
+	server: {
+		allowedHosts: ['drownsafe.20050703.xyz'],
+		watch: { ignored: ['**/log.txt', '**/main.db'] }
+	}
 });

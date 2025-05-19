@@ -15,11 +15,13 @@ export const load: PageServerLoad = async (event) => {
 	const tokenHash = encodeHex(await sha256(new TextEncoder().encode(event.params.token)));
 
 	const entry = db
-		.prepare('SELECT * FROM token WHERE tokenHash = ?')
-		.get(tokenHash) as DatabaseToken;
+		.prepare<string, DatabaseToken>('SELECT * FROM token WHERE tokenHash = ?')
+		.get(tokenHash);
 
 	if (entry) {
-		const user = db.prepare('SELECT * FROM user WHERE id = ?').get(entry.userID) as DatabaseUser;
+		const user = db
+			.prepare<string, DatabaseUser>('SELECT * FROM user WHERE id = ?')
+			.get(entry.userID);
 		if (user) {
 			return { username: user.username };
 		}
@@ -48,12 +50,15 @@ export const actions: Actions = {
 		try {
 			const tokenHash = encodeHex(await sha256(new TextEncoder().encode(event.params.token)));
 			const entry = db
-				.prepare('SELECT * FROM token WHERE tokenHash = ?')
-				.get(tokenHash) as DatabaseToken;
+				.prepare<string, DatabaseToken>('SELECT * FROM token WHERE tokenHash = ?')
+				.get(tokenHash);
 
 			if (entry) {
-				db.prepare('UPDATE user SET password = ? WHERE id = ?').run(hashedPassword, entry.userID);
-				db.prepare('DELETE from token WHERE tokenHash = ?').run(tokenHash);
+				db.prepare<[string, string]>('UPDATE user SET password = ? WHERE id = ?').run(
+					hashedPassword,
+					entry.userID
+				);
+				db.prepare<string>('DELETE from token WHERE tokenHash = ?').run(tokenHash);
 				return {
 					message:
 						'Password Updated Successfully. You will be redirected to the Main Dashboard shortly'
