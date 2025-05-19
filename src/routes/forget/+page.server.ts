@@ -2,11 +2,9 @@ import { db, type DatabaseUser } from '$lib/server/db';
 import { fail, redirect } from '@sveltejs/kit';
 import 'dotenv/config';
 import nodemailer from 'nodemailer';
-import { sha256 } from 'oslo/crypto';
-import { encodeHex } from 'oslo/encoding';
 
-import { generateIdFromEntropySize } from 'lucia';
-import { createDate, TimeSpan } from 'oslo';
+import { sha256 } from '@oslojs/crypto/sha2';
+import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
@@ -29,34 +27,16 @@ const transporter = nodemailer.createTransport({
 export const actions: Actions = {
 	default: async (event) => {
 		const formData = await event.request.formData();
-		const username = formData.get('username');
-		const email = formData.get('email');
+		const username_or_email = formData.get('username_or_email');
+
 		// basic check
-		if (typeof username !== 'string' || typeof email !== 'string') {
-			return fail(400, {
-				message: 'Invalid username or email'
-			});
-		}
-		if (!username && !email) {
-			return fail(400, { message: `You need to provide email or username` });
+		if (typeof username_or_email !== 'string') {
+			return fail(400, { message: 'Invalid username or email' });
 		}
 
-		let user: DatabaseUser | undefined;
-
-		if (username && email) {
-			user = db
-				.prepare<
-					[string, string],
-					DatabaseUser
-				>('SELECT * FROM user WHERE username = ? AND email = ?')
-				.get(username, email);
-		} else if (username) {
-			user = db
-				.prepare<string, DatabaseUser>('SELECT * FROM user WHERE username = ?')
-				.get(username);
-		} else if (email) {
-			user = db.prepare<string, DatabaseUser>('SELECT * FROM user WHERE email = ?').get(email);
-		}
+		let user = db
+			.prepare<[string, string], DatabaseUser>('SELECT * FROM user WHERE username = ? OR email = ?')
+			.get(username_or_email, username_or_email);
 
 		if (!user) {
 			return {
@@ -68,10 +48,10 @@ export const actions: Actions = {
 			db.prepare<string>('DELETE FROM token WHERE userID = ?').run(user.id);
 
 			const tokenID = generateIdFromEntropySize(25);
-			const tokenHash = encodeHex(await sha256(new TextEncoder().encode(tokenID)));
+			const tokenHash = encodeHexLowerCase(sha256(new TextEncoder().encode(tokenID)));
 			db.prepare<[string, string, number]>(
 				'INSERT INTO token (userID, tokenHash, expiresAt) VALUES (?, ?, ?)'
-			).run(user.id, tokenHash, createDate(new TimeSpan(1, 'h')).getTime());
+			).run(user.id, tokenHash, Date.now() + 60 * 60 * 1000);
 
 			const mailOptions = {
 				from: process.env.EMAIL,
@@ -96,3 +76,8 @@ export const actions: Actions = {
 		}
 	}
 };
+
+function generateIdFromEntropySize(size: number): string {
+	const buffer = crypto.getRandomValues(new Uint8Array(size));
+	return encodeBase32LowerCaseNoPadding(buffer);
+}

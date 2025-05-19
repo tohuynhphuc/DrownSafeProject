@@ -5,8 +5,8 @@ declare global {
 		// interface Error {}
 
 		interface Locals {
-			user: import('lucia').User | null;
-			session: import('lucia').Session | null;
+			session: import('./lib/server/session').Session | null;
+			user: Omit<import('./lib/server/session').User, 'password'> | null;
 		}
 
 		// interface PageData {}

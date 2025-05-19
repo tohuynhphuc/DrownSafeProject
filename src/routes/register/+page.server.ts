@@ -1,11 +1,10 @@
-import { lucia } from '$lib/server/auth';
+import { password_length, username_length, username_regex } from '$lib/const';
 import { db } from '$lib/server/db';
+import { createSession, generateSessionToken, setSessionTokenCookie } from '$lib/server/session';
+import { hashSync } from '@node-rs/argon2';
+import { type RandomReader, generateRandomString } from '@oslojs/crypto/random';
 import { fail, redirect } from '@sveltejs/kit';
 import { SqliteError } from 'better-sqlite3';
-import { generateId } from 'lucia';
-import { Argon2id } from 'oslo/password';
-
-import { password_length, username_length, username_regex } from '$lib/const';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
@@ -52,7 +51,7 @@ export const actions: Actions = {
 			});
 		}
 
-		const hashedPassword = await new Argon2id().hash(password);
+		const hashedPassword = hashSync(password);
 		const userId = generateId(15);
 
 		try {
@@ -60,12 +59,10 @@ export const actions: Actions = {
 				'INSERT INTO user (id, username, password, name, studentID, email, dob) VALUES(?, ?, ?, ?, ?, ?, ?)'
 			).run(userId, username, hashedPassword, name, studentID, email, dob);
 
-			const session = await lucia.createSession(userId, {});
-			const sessionCookie = lucia.createSessionCookie(session.id);
-			event.cookies.set(sessionCookie.name, sessionCookie.value, {
-				path: '.',
-				...sessionCookie.attributes
-			});
+			const token = generateSessionToken();
+			const session = createSession(token, userId);
+
+			setSessionTokenCookie(event, token, session.expires_at);
 		} catch (e) {
 			if (e instanceof SqliteError && e.code === 'SQLITE_CONSTRAINT_UNIQUE') {
 				return fail(400, {
@@ -89,3 +86,14 @@ export const actions: Actions = {
 		return redirect(302, '/main_dashboard');
 	}
 };
+
+const random: RandomReader = {
+	read(bytes: Uint8Array): void {
+		crypto.getRandomValues(bytes);
+	}
+};
+
+function generateId(length: number): string {
+	const alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789';
+	return generateRandomString(random, alphabet, length);
+}

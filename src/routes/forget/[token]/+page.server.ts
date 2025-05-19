@@ -1,18 +1,17 @@
+import { password_length } from '$lib/const';
 import { db, type DatabaseToken, type DatabaseUser } from '$lib/server/db';
+import { hashSync } from '@node-rs/argon2';
+import { sha256 } from '@oslojs/crypto/sha2';
+import { encodeHexLowerCase } from '@oslojs/encoding';
 import { fail, redirect } from '@sveltejs/kit';
 import 'dotenv/config';
-
-import { password_length } from '$lib/const';
-import { sha256 } from 'oslo/crypto';
-import { encodeHex } from 'oslo/encoding';
-import { Argon2id } from 'oslo/password';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
 		return redirect(302, '/main_dashboard');
 	}
-	const tokenHash = encodeHex(await sha256(new TextEncoder().encode(event.params.token)));
+	const tokenHash = encodeHexLowerCase(sha256(new TextEncoder().encode(event.params.token)));
 
 	const entry = db
 		.prepare<string, DatabaseToken>('SELECT * FROM token WHERE tokenHash = ?')
@@ -45,10 +44,10 @@ export const actions: Actions = {
 			});
 		}
 
-		const hashedPassword = await new Argon2id().hash(password);
+		const hashedPassword = hashSync(password);
 
 		try {
-			const tokenHash = encodeHex(await sha256(new TextEncoder().encode(event.params.token)));
+			const tokenHash = encodeHexLowerCase(sha256(new TextEncoder().encode(event.params.token)));
 			const entry = db
 				.prepare<string, DatabaseToken>('SELECT * FROM token WHERE tokenHash = ?')
 				.get(tokenHash);

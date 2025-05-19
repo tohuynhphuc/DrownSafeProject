@@ -1,10 +1,9 @@
-import { lucia } from '$lib/server/auth';
-import { db } from '$lib/server/db';
-import { fail, redirect } from '@sveltejs/kit';
-import { Argon2id } from 'oslo/password';
-
 import { admin, guard, password_length, username_length } from '$lib/const';
 import type { DatabaseUser } from '$lib/server/db';
+import { db } from '$lib/server/db';
+import { createSession, generateSessionToken, setSessionTokenCookie } from '$lib/server/session';
+import { verifySync } from '@node-rs/argon2';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
@@ -56,19 +55,17 @@ export const actions: Actions = {
 			});
 		}
 
-		const validPassword = await new Argon2id().verify(existingUser.password, password);
+		const validPassword = verifySync(existingUser.password, password);
 		if (!validPassword) {
 			return fail(400, {
 				message: 'Incorrect username or password'
 			});
 		}
 
-		const session = await lucia.createSession(existingUser.id, {});
-		const sessionCookie = lucia.createSessionCookie(session.id);
-		event.cookies.set(sessionCookie.name, sessionCookie.value, {
-			path: '.',
-			...sessionCookie.attributes
-		});
+		const token = generateSessionToken();
+		const session = createSession(token, existingUser.id);
+
+		setSessionTokenCookie(event, token, session.expires_at);
 
 		if (username === admin) {
 			return redirect(302, '/admin_dashboard');

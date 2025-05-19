@@ -3,7 +3,7 @@ import type { Http2SecureServer } from 'http2';
 import { Server } from 'socket.io';
 import { admin, guard } from '../const';
 import { type client_server, type server_client } from '../types';
-import { lucia } from './auth';
+import { validateSessionToken } from './session';
 
 export default function (server: http.Server | Http2SecureServer) {
 	const io = new Server<client_server, server_client>(server);
@@ -11,7 +11,7 @@ export default function (server: http.Server | Http2SecureServer) {
 	io.on('connection', (socket) => {
 		socket.on('login', async (sessionId) => {
 			if (!sessionId) return;
-			const { user } = await lucia.validateSession(sessionId);
+			const { user } = validateSessionToken(sessionId);
 			if (!user) return; // socket.emit("error", "login", "Invalid Session ID!")
 
 			socket.data.username = user.username;

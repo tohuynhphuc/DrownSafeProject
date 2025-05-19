@@ -1,7 +1,7 @@
 {
 	"name": "drownsafeproject",
 	"private": true,
-	"version": "2025.05.18.3",
+	"version": "2025.05.18.4",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
@@ -14,7 +14,9 @@
 		"lint": "prettier --check . && eslint ."
 	},
 	"devDependencies": {
-		"@lucia-auth/adapter-sqlite": "^3.0.2",
+		"@node-rs/argon2": "^2.0.2",
+		"@oslojs/crypto": "^1.0.1",
+		"@oslojs/encoding": "^1.1.0",
 		"@sveltejs/adapter-node": "^5.2.12",
 		"@sveltejs/kit": "^2.21.1",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
@@ -22,7 +24,6 @@
 		"@types/eslint": "^9.6.1",
 		"@types/leaflet": "^1.9.17",
 		"@types/nodemailer": "^6.4.17",
-		"autoprefixer": "^10.4.21",
 		"better-sqlite3": "^11.10.0",
 		"daisyui": "^5.0.35",
 		"dotenv": "^16.5.0",
@@ -31,10 +32,7 @@
 		"eslint-plugin-svelte": "^3.8.1",
 		"globals": "^16.1.0",
 		"leaflet": "^1.9.4",
-		"lucia": "^3.2.2",
 		"nodemailer": "^7.0.3",
-		"oslo": "^1.2.1",
-		"postcss": "^8.5.3",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.6.11",
