@@ -54,7 +54,7 @@ export const actions: Actions = {
 			).run(user.id, tokenHash, Date.now() + 60 * 60 * 1000);
 
 			const mailOptions = {
-				from: process.env.EMAIL,
+				from: 'DrownSafe <drownsafe@20050703.xyz>',
 				to: user.email,
 				subject: '[DrownSafe] - Reset Password',
 				html: `Please click on the link below to reset your password. If you didn't request this, please ignore this email and move on with your life.<br><br><a href="https://drownsafe.20050703.xyz/forget/${tokenID}">Click here!</a><br><br>Or you can copy the link and paste it into your browser: https://drownsafe.20050703.xyz/forget/${tokenID}`
