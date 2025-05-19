@@ -4,6 +4,8 @@
 	import Background from '$lib/background.svelte';
 	import Emptynavbar from '$lib/emptynavbar.svelte';
 	import Footer from '$lib/footer.svelte';
+
+	let submitted = $state(false);
 </script>
 
 <svelte:head>
@@ -18,21 +20,24 @@
 		class="border-secondary bg-opacity-70 flex w-[20rem] flex-col items-center justify-center gap-6 rounded-2xl border-2 bg-white py-10"
 	>
 		<div class="text-center text-5xl leading-tight"><b>Forget Password</b></div>
-		<form use:enhance method="post" class="flex flex-col gap-6 px-5">
+		<form
+			use:enhance
+			method="post"
+			class="flex flex-col gap-6 px-5"
+			onsubmit={() => {
+				submitted = true;
+			}}
+		>
 			<div>
-				<div class="text-xl">USERNAME</div>
+				<div class="required text-xl">USERNAME or EMAIL</div>
 				<div class="h-2"></div>
 				<input
 					type="text"
 					class="input input-primary w-full"
-					name="username"
+					name="username_or_email"
 					autocapitalize="none"
+					required
 				/>
-			</div>
-			<div>
-				<div class="text-xl">EMAIL</div>
-				<div class="h-2"></div>
-				<input type="email" class="input input-primary w-full" name="email" autocapitalize="none" />
 			</div>
 			<div class="flex flex-col items-center justify-center gap-1">
 				<div>Already have an account?</div>
@@ -49,6 +54,10 @@
 					: 'text-error'} px-10 text-center font-semibold text-wrap"
 			>
 				{page.form?.message}
+			</div>
+		{:else if submitted}
+			<div class="text-warning text-center font-semibold text-wrap">
+				Please wait while we process your request...
 			</div>
 		{/if}
 	</div>

@@ -4,20 +4,15 @@
 	import Background from '$lib/background.svelte';
 	import Emptynavbar from '$lib/emptynavbar.svelte';
 	import Footer from '$lib/footer.svelte';
-	import { untrack } from 'svelte';
 
-	let { data } = $props();
+	const { data } = $props();
 
 	$effect(() => {
-		page.form?.message;
-		page.status;
-		untrack(() => {
-			if (200 <= page.status && page.status <= 299) {
-				setTimeout(() => {
-					location.href = '/login';
-				}, 3000);
-			}
-		});
+		if (page.form.message && 200 <= page.status && page.status <= 299) {
+			setTimeout(() => {
+				location.href = '/login';
+			}, 3000);
+		}
 	});
 </script>
 
@@ -32,7 +27,7 @@
 	<div
 		class="border-secondary bg-opacity-70 flex w-[20rem] flex-col items-center justify-center gap-6 rounded-2xl border-2 bg-white py-10"
 	>
-		{#if data.username}
+		{#if data.username || page.form?.message}
 			<div class="text-center text-5xl leading-tight"><b>Change Password</b></div>
 			<form use:enhance method="post" class="flex flex-col gap-6 px-5">
 				<div>

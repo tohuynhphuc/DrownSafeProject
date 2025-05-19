@@ -1,15 +1,17 @@
 {
 	"name": "drownsafeproject",
 	"private": true,
-	"version": "2025.05.18.2",
+	"version": "2025.05.18.3",
+	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint ."
 	},
 	"devDependencies": {
 		"@lucia-auth/adapter-sqlite": "^3.0.2",
@@ -47,7 +49,6 @@
 		"typescript-eslint": "^8.32.1",
 		"vite": "^6.3.5"
 	},
-	"type": "module",
 	"pnpm": {
 		"onlyBuiltDependencies": [
 			"better-sqlite3",
