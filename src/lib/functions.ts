@@ -18,7 +18,13 @@ export function isPointInPolygon(px: number, py: number, vertices: [x: number, y
 	}
 
 	for (let i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
-		if (vertices[i][1] > py !== vertices[j][1] > py && px < ((vertices[j][0] - vertices[i][0]) * (py - vertices[i][1])) / (vertices[j][1] - vertices[i][1]) + vertices[i][0]) {
+		if (
+			vertices[i][1] > py !== vertices[j][1] > py &&
+			px <
+				((vertices[j][0] - vertices[i][0]) * (py - vertices[i][1])) /
+					(vertices[j][1] - vertices[i][1]) +
+					vertices[i][0]
+		) {
 			isInside = !isInside;
 		}
 	}

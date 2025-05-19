@@ -1,13 +1,17 @@
 {
-	"[svelte]": { "editor.codeActionsOnSave": { "source.organizeImports": "always" } },
-	"[typescript]": { "editor.codeActionsOnSave": { "source.organizeImports": "always" } },
+	"editor.codeActionsOnSave": { "source.organizeImports": "always" },
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
+	"editor.linkedEditing": true,
+	"eslint.validate": ["javascript", "svelte", "typescript"],
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": { "package.json": "*" },
 	"files.autoSave": "onFocusChange",
-	"files.exclude": {
-		".svelte-kit": true,
-		"build": true,
-		"node_modules": true
-	},
-	"prettier.configPath": "./.prettierrc"
+	"files.exclude": { ".svelte-kit": true, "build": true, "node_modules": true },
+	"prettier.configPath": "./.prettierrc",
+	"svelte.enable-ts-plugin": true,
+	"workbench.editor.customLabels.patterns": {
+		"*/**/*.*": "${filename}",
+		"*/src/**/+page.*": "${dirname}"
+	}
 }

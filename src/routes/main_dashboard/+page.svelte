@@ -1,17 +1,17 @@
 <script lang="ts">
-	import Background from "$lib/background.svelte";
+	import Background from '$lib/background.svelte';
 	import {
 		dangerZones,
 		markerDangerOptions,
 		markerSafeOptions,
 		socket,
 		vguBoundingBox
-	} from "$lib/const";
-	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
-	import Footer from "$lib/footer.svelte";
-	import { isPointInPolygon } from "$lib/functions.js";
-	import { icon, Icon } from "leaflet";
-	import { LayerGroup, Map, Marker, Popup, TileLayer } from "sveaflet";
+	} from '$lib/const';
+	import Dashboardnavbar from '$lib/dashboardnavbar.svelte';
+	import Footer from '$lib/footer.svelte';
+	import { isPointInPolygon } from '$lib/functions.js';
+	import { icon, Icon } from 'leaflet';
+	import { LayerGroup, Map, Marker, Popup, TileLayer } from 'sveaflet';
 
 	let { data } = $props();
 	let latitude = $state<number>(0);
@@ -30,7 +30,7 @@
 		navigator.geolocation.watchPosition(
 			(pos) => {
 				socket.emit(
-					"gps",
+					'gps',
 					data.name,
 					pos.coords.longitude,
 					pos.coords.latitude,
@@ -42,7 +42,7 @@
 				console.log(pos.coords.accuracy);
 			},
 			(err) => {
-				console.log("Error: ", err);
+				console.log('Error: ', err);
 			},
 			{
 				enableHighAccuracy: true,
@@ -63,11 +63,11 @@
 <Background></Background>
 <Dashboardnavbar username={data.username} name={data.name}></Dashboardnavbar>
 
-<div class="grid grid-cols-1 xl:grid-cols-[1fr_62.91%] justify-between">
-	<div class="flex flex-col items-center text-2xl px-10 gap-3 bg-white bg-opacity-70 py-10">
-		<div class="text-3xl w-full font-bold text-center mb-7">
+<div class="grid grid-cols-1 justify-between xl:grid-cols-[1fr_62.91%]">
+	<div class="bg-opacity-70 flex flex-col items-center gap-3 bg-white px-10 py-10 text-2xl">
+		<div class="mb-7 w-full text-center text-3xl font-bold">
 			Current Situation: {#if isDanger}
-				<span class="text-5xl text-error animate-blink">Dangerous</span>
+				<span class="text-error animate-blink text-5xl">Dangerous</span>
 				<audio src="/sounds/warning.mp3" loop autoplay></audio>
 			{:else if isInSchool}
 				<span class="text-success">Safe</span>
@@ -76,7 +76,7 @@
 			{/if}
 		</div>
 		<div
-			class="flex flex-col xl:flex-row items-center justify-start xl:justify-between max-w-[30rem] w-full bg-red-100 rounded-3xl p-6"
+			class="flex w-full max-w-[30rem] flex-col items-center justify-start rounded-3xl bg-red-100 p-6 xl:flex-row xl:justify-between"
 		>
 			<div class="flex flex-row items-center gap-3 font-semibold">
 				<img src="/latitude.png" alt="" class="inline size-10" />
@@ -86,7 +86,7 @@
 		</div>
 
 		<div
-			class="flex flex-col xl:flex-row items-center justify-start xl:justify-between max-w-[30rem] w-full bg-yellow-100 rounded-3xl p-6"
+			class="flex w-full max-w-[30rem] flex-col items-center justify-start rounded-3xl bg-yellow-100 p-6 xl:flex-row xl:justify-between"
 		>
 			<div class="flex flex-row items-center gap-3 font-semibold">
 				<img src="/latitude.png" alt="" class="inline size-10" />
@@ -96,7 +96,7 @@
 		</div>
 
 		<div
-			class="flex flex-col xl:flex-row items-center justify-start xl:justify-between max-w-[30rem] w-full bg-green-100 rounded-3xl p-6"
+			class="flex w-full max-w-[30rem] flex-col items-center justify-start rounded-3xl bg-green-100 p-6 xl:flex-row xl:justify-between"
 		>
 			<div class="flex flex-row items-center gap-3 font-semibold">
 				<img src="/accuracy.png" alt="" class="inline size-10" />
@@ -105,14 +105,14 @@
 			<div>{accuracy.toFixed(2)}m</div>
 		</div>
 	</div>
-	<div class="h-[600px] z-0 shadow-2xl">
+	<div class="z-0 h-[600px] shadow-2xl">
 		<Map
 			options={{
 				center: [11.107737, 106.615169],
 				zoom: window.screen.width < 1280 ? 16 : 17
 			}}
 		>
-			<TileLayer url={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
+			<TileLayer url={'https://tile.openstreetmap.org/{z}/{x}/{y}.png'} />
 			{#if isInSchool}
 				<LayerGroup>
 					{#if isDanger}

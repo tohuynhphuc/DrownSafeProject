@@ -1,9 +1,9 @@
 <script>
-	import { enhance } from "$app/forms";
-	import { page } from "$app/stores";
-	import Background from "$lib/background.svelte";
-	import Emptynavbar from "$lib/emptynavbar.svelte";
-	import Footer from "$lib/footer.svelte";
+	import { enhance } from '$app/forms';
+	import { page } from '$app/state';
+	import Background from '$lib/background.svelte';
+	import Emptynavbar from '$lib/emptynavbar.svelte';
+	import Footer from '$lib/footer.svelte';
 </script>
 
 <svelte:head>
@@ -13,11 +13,11 @@
 <Background></Background>
 <Emptynavbar></Emptynavbar>
 
-<div class="flex flex-col items-center justify-center mt-10 mb-14">
+<div class="mt-10 mb-14 flex flex-col items-center justify-center">
 	<div
-		class="flex flex-col items-center justify-center gap-6 border-secondary bg-white bg-opacity-70 border-2 w-[20rem] py-10 rounded-2xl"
+		class="border-secondary bg-opacity-70 flex w-[20rem] flex-col items-center justify-center gap-6 rounded-2xl border-2 bg-white py-10"
 	>
-		<div class="text-5xl text-center"><b>Log In</b></div>
+		<div class="text-center text-5xl"><b>Log In</b></div>
 		<form use:enhance method="post" class="flex flex-col gap-6 px-5">
 			<div>
 				<div class="text-xl">USERNAME</div>
@@ -42,13 +42,13 @@
 			</div>
 			<input type="submit" class="btn btn-primary w-full" value="Log In" />
 		</form>
-		{#if $page.form?.message}
+		{#if page.form?.message}
 			<div
-				class="xl:col-span-2 {200 <= $page.status && $page.status <= 299
+				class="xl:col-span-2 {200 <= page.status && page.status <= 299
 					? 'text-success'
-					: 'text-error'} font-semibold py-2 text-wrap px-10 text-center"
+					: 'text-error'} px-10 py-2 text-center font-semibold text-wrap"
 			>
-				{$page.form?.message}
+				{page.form?.message}
 			</div>
 		{/if}
 	</div>

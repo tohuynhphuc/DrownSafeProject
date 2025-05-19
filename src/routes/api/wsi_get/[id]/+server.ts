@@ -1,13 +1,13 @@
-import { redirect } from "@sveltejs/kit";
+import { redirect } from '@sveltejs/kit';
 
-import { db, type DatabaseWSI } from "$lib/server/db";
+import { db, type DatabaseWSI } from '$lib/server/db';
 
 export const GET = async (event) => {
 	if (!event.locals.user) {
-		return redirect(302, "/login");
+		return redirect(302, '/login');
 	}
 
-	const wsi = db.prepare("SELECT * FROM waterInfo WHERE id = ?").get(event.params.id) as
+	const wsi = db.prepare('SELECT * FROM waterInfo WHERE id = ?').get(event.params.id) as
 		| DatabaseWSI
 		| undefined;
 

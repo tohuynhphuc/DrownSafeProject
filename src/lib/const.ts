@@ -1,5 +1,5 @@
-import { io, type Socket } from "socket.io-client";
-import type { client_server, server_client } from "./types";
+import { io, type Socket } from 'socket.io-client';
+import type { client_server, server_client } from './types';
 
 export const email_length = 256;
 export const name_length = 32;
@@ -7,8 +7,8 @@ export const username_length = [3, 31] as const;
 export const password_length = [6, 255] as const;
 export const username_regex = /^[a-zA-Z0-9-_]+$/;
 export const socket: Socket<server_client, client_server> = io();
-export const admin = "administration";
-export const guard = "guard";
+export const admin = 'administration';
+export const guard = 'guard';
 
 export const vguBoundingBox: [number, number][] = [
 	[11.1107, 106.62],
@@ -92,7 +92,7 @@ export const markerDangerOptions: {
 	iconAnchor: [number, number];
 	popupAnchor: [number, number];
 } = {
-	iconUrl: "/marker_danger.svg",
+	iconUrl: '/marker_danger.svg',
 	iconSize: [50, 50],
 	iconAnchor: [25, 40],
 	popupAnchor: [0, -30]
@@ -104,7 +104,7 @@ export const markerSafeOptions: {
 	iconAnchor: [number, number];
 	popupAnchor: [number, number];
 } = {
-	iconUrl: "/marker_safe.svg",
+	iconUrl: '/marker_safe.svg',
 	iconSize: [50, 50],
 	iconAnchor: [25, 40],
 	popupAnchor: [0, -30]

@@ -1,5 +1,5 @@
 // * Import
-import sqlite from "better-sqlite3";
+import sqlite from 'better-sqlite3';
 
 export interface DatabaseUser {
 	id: string;
@@ -26,7 +26,7 @@ export interface DatabaseWSI {
 	content: string;
 }
 
-export const db = sqlite("src/lib/server/main.db");
+export const db = sqlite('src/lib/server/main.db');
 
 db.exec(`CREATE TABLE IF NOT EXISTS user (
 	id TEXT NOT NULL PRIMARY KEY,

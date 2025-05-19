@@ -1,6 +1,6 @@
 <script>
-	import Dashboardnavbar from "$lib/dashboardnavbar.svelte";
-	import Footer from "$lib/footer.svelte";
+	import Dashboardnavbar from '$lib/dashboardnavbar.svelte';
+	import Footer from '$lib/footer.svelte';
 
 	let { data } = $props();
 </script>
@@ -12,7 +12,7 @@
 <Dashboardnavbar username={data.username} name={data.name}></Dashboardnavbar>
 
 <div class="bg-customlav">
-	<div class="flex flex-col justify-between gap-5 text-xl py-14 px-5 xl:px-20 xl:flex-row">
+	<div class="flex flex-col justify-between gap-5 px-5 py-14 text-xl xl:flex-row xl:px-20">
 		<div class="flex flex-col gap-10">
 			<div class="text-7xl"><b>Water Safety & Beyond</b></div>
 			<div class="mt-3">
@@ -20,7 +20,7 @@
 			</div>
 			<a
 				href="/register"
-				class="btn bg-customyellow w-44 h-16 xl:mt-16 rounded-3xl text-xl hover:bg-customyellowdark"
+				class="btn bg-customyellow hover:bg-customyellowdark h-16 w-44 rounded-3xl text-xl xl:mt-16"
 				>Get Started</a
 			>
 		</div>
@@ -31,7 +31,7 @@
 </div>
 
 <div class="bg-customgreen">
-	<div class="flex flex-col items-center justify-center py-14 px-5 xl:px-20 xl:flex-row">
+	<div class="flex flex-col items-center justify-center px-5 py-14 xl:flex-row xl:px-20">
 		<iframe
 			width="784"
 			height="441"
@@ -45,7 +45,7 @@
 	</div>
 </div>
 
-<div class="flex flex-wrap flex-row py-20 px-5 xl:px-20 gap-y-10 justify-around items-center">
+<div class="flex flex-row flex-wrap items-center justify-around gap-y-10 px-5 py-20 xl:px-20">
 	<img class="h-12" src="/logo/vgu-logo.png" alt="Vietnamesisch-Deutsche Universität" />
 	<img class="h-28" src="/logo/chuthapdo.jpg" alt="Vietnam Red Cross Society" />
 	<img class="h-12" src="/logo/swimvietnam.png" alt="Swim Vietnam" />
@@ -58,27 +58,27 @@
 
 <div>
 	<div
-		class="flex flex-col xl:flex-row gap-10 xl:gap-0 text-xl py-14 px-5 xl:px-20 justify-around items-center"
+		class="flex flex-col items-center justify-around gap-10 px-5 py-14 text-xl xl:flex-row xl:gap-0 xl:px-20"
 	>
-		<div class="flex flex-col items-center gap-5 w-60 text-center">
+		<div class="flex w-60 flex-col items-center gap-5 text-center">
 			<img src="/notification.png" alt="" class="size-20" />
 			<div><b>Best Quality Service</b></div>
 			<div>Speedy alert, ensuring no one will be in danger.</div>
 		</div>
 
-		<div class="flex flex-col items-center gap-5 w-60 text-center">
+		<div class="flex w-60 flex-col items-center gap-5 text-center">
 			<img src="/news.png" alt="" class="size-20" />
 			<div><b>Up-to-date News</b></div>
 			<div>Rapid updates of news from the admin and our team.</div>
 		</div>
 
-		<div class="flex flex-col items-center gap-5 w-60 text-center">
+		<div class="flex w-60 flex-col items-center gap-5 text-center">
 			<img src="/helpline.png" alt="" class="size-20" />
 			<div><b>Helpful Aid Hotlines</b></div>
 			<div>Your problems will be solved within a blink of an eye.</div>
 		</div>
 
-		<div class="flex flex-col items-center gap-5 w-60 text-center">
+		<div class="flex w-60 flex-col items-center gap-5 text-center">
 			<img src="/maintenance.png" alt="" class="size-20" />
 			<div><b>User-Driven Maintenance</b></div>
 			<div>We listen to your feedback to improve and adapt the service.</div>
@@ -87,15 +87,15 @@
 </div>
 
 <div class="bg-custombluelight">
-	<div class="flex flex-col justify-between gap-5 text-xl py-14 px-5 xl:px-32 xl:flex-row">
-		<div class="flex flex-col gap-10 w-[100%]">
+	<div class="flex flex-col justify-between gap-5 px-5 py-14 text-xl xl:flex-row xl:px-32">
+		<div class="flex w-[100%] flex-col gap-10">
 			<div class="text-7xl"><b>Let's Talk!</b></div>
 			<div class="mt-3 leading-relaxed text-gray-400">
 				You can ask us questions about our service, and we will be happy to answer you!
 			</div>
 			<a
 				href="#footer"
-				class="btn bg-customyellow w-44 h-16 xl:mt-10 rounded-3xl text-xl hover:bg-customyellowdark"
+				class="btn bg-customyellow hover:bg-customyellowdark h-16 w-44 rounded-3xl text-xl xl:mt-10"
 				>Contact Us</a
 			>
 		</div>
@@ -107,10 +107,10 @@
 
 <div class="bg-custompurple">
 	<div
-		class="grid grid-cols-1 xl:grid-cols-[2fr_3fr] gap-20 items-center justify-center py-14 px-5 xl:px-20 xl:mx-36 text-2xl leading-relaxed"
+		class="grid grid-cols-1 items-center justify-center gap-20 px-5 py-14 text-2xl leading-relaxed xl:mx-36 xl:grid-cols-[2fr_3fr] xl:px-20"
 	>
 		<div class="">
-			<img src="/nhatminh.jpg" alt="Trần Ninh Nhật Minh" class="rounded-full w-full" />
+			<img src="/nhatminh.jpg" alt="Trần Ninh Nhật Minh" class="w-full rounded-full" />
 		</div>
 		<div class="flex flex-col">
 			<img src="/quote.png" alt="" class="w-32" />
@@ -122,7 +122,7 @@
 					solution!
 				</b>
 			</div>
-			<div class="text-gray-500 text-xl mt-10">Trần Ninh Nhật Minh</div>
+			<div class="mt-10 text-xl text-gray-500">Trần Ninh Nhật Minh</div>
 		</div>
 	</div>
 </div>

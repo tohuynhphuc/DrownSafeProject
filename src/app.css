@@ -1,18 +1,72 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant hover (&:hover);
+
+@theme {
+	--color-customlav: #f7f5fd;
+	--color-customblue: #3366ff;
+	--color-customyellow: #f8d57e;
+	--color-customyellowdark: #f7c23b;
+	--color-custombluedark: #264ab5;
+	--color-customgreen: #f2faf8;
+	--color-custombluelight: #eaf6ff;
+	--color-custompurple: #ece7fb;
+	--color-customfooter: #708090;
+}
+
+@plugin "daisyui" {
+	themes: light;
+}
+
+@plugin "daisyui/theme" {
+	name: 'light';
+	default: true;
+	--color-primary: #17c3b2;
+	--color-secondary: #7e78d2;
+}
 
 html {
 	scroll-behavior: smooth;
 }
 
 .required:after {
-	content: " *";
+	content: ' *';
 	color: red;
 }
 
 body {
-	@apply min-h-[100vh] flex flex-col;
+	@apply flex min-h-[100vh] flex-col;
+}
+
+@keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	49% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.animate-blink {
+	animation: blink 0.2s linear infinite;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+.required:after {
+	content: ' *';
+	color: red;
+}
+
+body {
+	@apply flex min-h-[100vh] flex-col;
 }
 
 @keyframes blink {

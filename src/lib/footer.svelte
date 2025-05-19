@@ -1,11 +1,11 @@
-<div class="bg-customfooter text-white mt-auto">
-	<div class="text-xl py-14 px-5 xl:px-20">
-		<div class="flex flex-col xl:flex-row justify-between items-start gap-y-10">
+<div class="bg-customfooter mt-auto text-white">
+	<div class="px-5 py-14 text-xl xl:px-20">
+		<div class="flex flex-col items-start justify-between gap-y-10 xl:flex-row">
 			<div class="flex flex-row items-center gap-2">
 				<img src="/favicon.png" alt="Icon" class="size-10" />
 				<div><b>DROWNSAFE</b></div>
 			</div>
-			<div class="flex flex-col text-left leading-relaxed items-start xl:items-end xl:text-right">
+			<div class="flex flex-col items-start text-left leading-relaxed xl:items-end xl:text-right">
 				<div>VIETNAMESE - GERMAN UNIVERSITY</div>
 				<div><b>VGU CAMPUS</b></div>
 				<div class="flex flex-row items-center gap-2">

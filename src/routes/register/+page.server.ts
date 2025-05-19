@@ -25,12 +25,21 @@ export const actions: Actions = {
 		const email = formData.get('email');
 		const dob = formData.get('dob');
 		// basic check
-		if (typeof username !== 'string' || username.length < username_length[0] || username.length > username_length[1] || !username_regex.test(username)) {
+		if (
+			typeof username !== 'string' ||
+			username.length < username_length[0] ||
+			username.length > username_length[1] ||
+			!username_regex.test(username)
+		) {
 			return fail(400, {
 				message: `Username must be ${username_length[0]}-${username_length[1]} characters long and only consist of letters, numbers, dashes, and underscores`
 			});
 		}
-		if (typeof password !== 'string' || password.length < password_length[0] || password.length > password_length[1]) {
+		if (
+			typeof password !== 'string' ||
+			password.length < password_length[0] ||
+			password.length > password_length[1]
+		) {
 			return fail(400, {
 				message: `Password must be ${password_length[0]}-${password_length[1]} characters long`
 			});
@@ -40,7 +49,9 @@ export const actions: Actions = {
 		const userId = generateId(15);
 
 		try {
-			db.prepare('INSERT INTO user (id, username, password, name, studentID, email, dob) VALUES(?, ?, ?, ?, ?, ?, ?)').run(userId, username, hashedPassword, name, studentID, email, dob);
+			db.prepare(
+				'INSERT INTO user (id, username, password, name, studentID, email, dob) VALUES(?, ?, ?, ?, ?, ?, ?)'
+			).run(userId, username, hashedPassword, name, studentID, email, dob);
 
 			const session = await lucia.createSession(userId, {});
 			const sessionCookie = lucia.createSessionCookie(session.id);

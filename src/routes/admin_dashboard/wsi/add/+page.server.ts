@@ -1,12 +1,12 @@
-import { fail, redirect } from "@sveltejs/kit";
+import { fail, redirect } from '@sveltejs/kit';
 
-import { admin } from "$lib/const";
-import { db } from "$lib/server/db";
-import type { Actions, PageServerLoad } from "./$types";
+import { admin } from '$lib/const';
+import { db } from '$lib/server/db';
+import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.user || event.locals.user.username != admin) {
-		redirect(302, "/login");
+		redirect(302, '/login');
 		return {};
 	}
 
@@ -23,15 +23,15 @@ export const load: PageServerLoad = async (event) => {
 export const actions: Actions = {
 	default: async (event) => {
 		const formData = await event.request.formData();
-		const title = formData.get("title");
-		const author = formData.get("author");
-		const image = formData.get("image");
-		const content = formData.get("content");
+		const title = formData.get('title');
+		const author = formData.get('author');
+		const image = formData.get('image');
+		const content = formData.get('content');
 
 		if (
-			typeof title != "string" ||
-			typeof author != "string" ||
-			typeof content != "string" ||
+			typeof title != 'string' ||
+			typeof author != 'string' ||
+			typeof content != 'string' ||
 			!(image instanceof File)
 		) {
 			return fail(400);
@@ -39,7 +39,7 @@ export const actions: Actions = {
 
 		try {
 			db.prepare(
-				"INSERT INTO waterInfo (id, title, author, mimetype, data, content) VALUES(?, ?, ?, ?, ?, ?)"
+				'INSERT INTO waterInfo (id, title, author, mimetype, data, content) VALUES(?, ?, ?, ?, ?, ?)'
 			).run(
 				Date.now().toString(),
 				title,
@@ -48,11 +48,11 @@ export const actions: Actions = {
 				Buffer.from(await image?.arrayBuffer()),
 				content
 			);
-			return { message: "Success!" };
+			return { message: 'Success!' };
 		} catch (e) {
 			console.log(e);
 			return fail(500, {
-				message: "An unknown error occurred"
+				message: 'An unknown error occurred'
 			});
 		}
 	}

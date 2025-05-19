@@ -1,11 +1,11 @@
-import { redirect } from "@sveltejs/kit";
+import { redirect } from '@sveltejs/kit';
 
-import { admin } from "$lib/const";
-import type { PageServerLoad } from "./$types";
+import { admin } from '$lib/const';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.user || event.locals.user.username != admin) {
-		return redirect(302, "/login");
+		return redirect(302, '/login');
 	}
 
 	return {

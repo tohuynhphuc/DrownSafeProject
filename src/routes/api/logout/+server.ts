@@ -1,5 +1,5 @@
-import { lucia } from "$lib/server/auth.js";
-import { error, redirect } from "@sveltejs/kit";
+import { lucia } from '$lib/server/auth.js';
+import { error, redirect } from '@sveltejs/kit';
 
 export const GET = async (event) => {
 	if (!event.locals.session) {
@@ -10,8 +10,8 @@ export const GET = async (event) => {
 
 	const sessionCookie = lucia.createBlankSessionCookie();
 	event.cookies.set(sessionCookie.name, sessionCookie.value, {
-		path: ".",
+		path: '.',
 		...sessionCookie.attributes
 	});
-	redirect(302, "/");
+	redirect(302, '/');
 };
