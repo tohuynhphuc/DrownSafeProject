@@ -7,6 +7,6 @@ export default defineConfig({
 		allowedHosts: ['drownsafe.20050703.xyz'],
 		watch: { ignored: ['**/log.txt', '**/main.db'] }
 	},
-	ssr: { noExternal: ['@node-rs/argon2'] },
-	build: { rollupOptions: { external: ['@node-rs/argon2'] } }
+	ssr: { noExternal: ['@node-rs/argon2', 'better-sqlite3'] },
+	build: { rollupOptions: { external: ['@node-rs/argon2', 'better-sqlite3'] } }
 });
