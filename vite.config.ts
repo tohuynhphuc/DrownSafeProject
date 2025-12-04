@@ -6,5 +6,7 @@ export default defineConfig({
 	server: {
 		allowedHosts: ['drownsafe.20050703.xyz'],
 		watch: { ignored: ['**/log.txt', '**/main.db'] }
-	}
+	},
+	ssr: { noExternal: ['@node-rs/argon2'] },
+	build: { rollupOptions: { external: ['@node-rs/argon2'] } }
 });
