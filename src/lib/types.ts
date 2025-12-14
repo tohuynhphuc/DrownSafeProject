@@ -1,4 +1,4 @@
-import { z } from 'zod/v4-mini';
+import { z } from 'zod/v4';
 
 export const data_schema = z.object({
 	username: z.string(),

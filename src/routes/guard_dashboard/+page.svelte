@@ -91,22 +91,22 @@
 			</select>
 		</div> -->
 		{#if dangerStudents.length > 0}
-			<div class="text-error animate-blink w-full text-center text-6xl font-bold">
+			<div class="animate-blink w-full text-center text-6xl font-bold text-error">
 				STUDENTS ARE IN DANGER
 			</div>
 			<audio src="/sounds/warning.mp3" loop autoplay></audio>
 		{:else}
-			<div class="text-success w-full text-center text-6xl font-bold">STUDENTS ARE ALL SAFE</div>
+			<div class="w-full text-center text-6xl font-bold text-success">STUDENTS ARE ALL SAFE</div>
 		{/if}
 	</div>
-	<div class="z-0 h-[600px] shadow-2xl">
+	<div class="z-0 h-150 shadow-2xl">
 		<Map
 			options={{
 				center: [11.107737, 106.615169],
 				zoom: window.screen.width < 1280 ? 16 : 17
 			}}
 		>
-			<TileLayer url={'https://tile.openstreetmap.org/{z}/{x}/{y}.png'} />
+			<TileLayer url={'https://tile.openstreetmap.org/{z}/{x}/{y}.webp'} />
 			{#each studentCoords as studentCoord}
 				<LayerGroup>
 					{#if dangerStudents.includes(studentCoord.username)}

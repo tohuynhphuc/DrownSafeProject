@@ -20,12 +20,12 @@
 			</div>
 			<a
 				href="/register"
-				class="btn bg-customyellow hover:bg-customyellowdark h-16 w-44 rounded-3xl text-xl xl:mt-16"
+				class="btn h-16 w-44 rounded-3xl bg-customyellow text-xl hover:bg-customyellowdark xl:mt-16"
 				>Get Started</a
 			>
 		</div>
 		<div class="w-full">
-			<img src="/vgu.jpg" alt="VGU Campus with the Sunrise River" class="rounded-2xl" />
+			<img src="/vgu.webp" alt="VGU Campus with the Sunrise River" class="rounded-2xl" />
 		</div>
 	</div>
 </div>
@@ -46,12 +46,12 @@
 </div>
 
 <div class="flex flex-row flex-wrap items-center justify-around gap-y-10 px-5 py-20 xl:px-20">
-	<img class="h-12" src="/logo/vgu-logo.png" alt="Vietnamesisch-Deutsche Universität" />
-	<img class="h-28" src="/logo/chuthapdo.jpg" alt="Vietnam Red Cross Society" />
-	<img class="h-12" src="/logo/swimvietnam.png" alt="Swim Vietnam" />
+	<img class="h-12" src="/logo/vgu-logo.webp" alt="Vietnamesisch-Deutsche Universität" />
+	<img class="h-28" src="/logo/chuthapdo.webp" alt="Vietnam Red Cross Society" />
+	<img class="h-12" src="/logo/swimvietnam.webp" alt="Swim Vietnam" />
 	<img
 		class="h-28"
-		src="/logo/mrcc.png"
+		src="/logo/mrcc.webp"
 		alt="Vietnam Marinetime search and Rescue Coordination Center"
 	/>
 </div>
@@ -61,25 +61,25 @@
 		class="flex flex-col items-center justify-around gap-10 px-5 py-14 text-xl xl:flex-row xl:gap-0 xl:px-20"
 	>
 		<div class="flex w-60 flex-col items-center gap-5 text-center">
-			<img src="/notification.png" alt="" class="size-20" />
+			<img src="/notification.webp" alt="" class="size-20" />
 			<div><b>Best Quality Service</b></div>
 			<div>Speedy alert, ensuring no one will be in danger.</div>
 		</div>
 
 		<div class="flex w-60 flex-col items-center gap-5 text-center">
-			<img src="/news.png" alt="" class="size-20" />
+			<img src="/news.webp" alt="" class="size-20" />
 			<div><b>Up-to-date News</b></div>
 			<div>Rapid updates of news from the admin and our team.</div>
 		</div>
 
 		<div class="flex w-60 flex-col items-center gap-5 text-center">
-			<img src="/helpline.png" alt="" class="size-20" />
+			<img src="/helpline.webp" alt="" class="size-20" />
 			<div><b>Helpful Aid Hotlines</b></div>
 			<div>Your problems will be solved within a blink of an eye.</div>
 		</div>
 
 		<div class="flex w-60 flex-col items-center gap-5 text-center">
-			<img src="/maintenance.png" alt="" class="size-20" />
+			<img src="/maintenance.webp" alt="" class="size-20" />
 			<div><b>User-Driven Maintenance</b></div>
 			<div>We listen to your feedback to improve and adapt the service.</div>
 		</div>
@@ -88,19 +88,19 @@
 
 <div class="bg-custombluelight">
 	<div class="flex flex-col justify-between gap-5 px-5 py-14 text-xl xl:flex-row xl:px-32">
-		<div class="flex w-[100%] flex-col gap-10">
+		<div class="flex w-full flex-col gap-10">
 			<div class="text-7xl"><b>Let's Talk!</b></div>
 			<div class="mt-3 leading-relaxed text-gray-400">
 				You can ask us questions about our service, and we will be happy to answer you!
 			</div>
 			<a
 				href="#footer"
-				class="btn bg-customyellow hover:bg-customyellowdark h-16 w-44 rounded-3xl text-xl xl:mt-10"
+				class="btn h-16 w-44 rounded-3xl bg-customyellow text-xl hover:bg-customyellowdark xl:mt-10"
 				>Contact Us</a
 			>
 		</div>
-		<div class="w-[100%]">
-			<img src="/dogswim.jpeg" alt="Swimming Dog" class="rounded-2xl" />
+		<div class="w-full">
+			<img src="/dogswim.webp" alt="Swimming Dog" class="rounded-2xl" />
 		</div>
 	</div>
 </div>
@@ -110,10 +110,10 @@
 		class="grid grid-cols-1 items-center justify-center gap-20 px-5 py-14 text-2xl leading-relaxed xl:mx-36 xl:grid-cols-[2fr_3fr] xl:px-20"
 	>
 		<div class="">
-			<img src="/nhatminh.jpg" alt="Trần Ninh Nhật Minh" class="w-full rounded-full" />
+			<img src="/nhatminh.webp" alt="Trần Ninh Nhật Minh" class="w-full rounded-full" />
 		</div>
 		<div class="flex flex-col">
-			<img src="/quote.png" alt="" class="w-32" />
+			<img src="/quote.webp" alt="" class="w-32" />
 			<div>
 				<b>
 					We always strive for the safety of everyone. Sunrise river constitutes a beautiful element

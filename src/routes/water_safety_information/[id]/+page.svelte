@@ -23,16 +23,16 @@
 			<div class="w-full text-left text-xl leading-relaxed">
 				{@html data.wsi.content?.replaceAll('\n', '<br>')}
 			</div>
-			<a href="/water_safety_information" class="btn btn-primary h-14 px-12 text-xl">Back</a>
+			<a href="/water_safety_information" class="btn h-14 px-12 text-xl btn-primary">Back</a>
 		</div>
 	</div>
 {:else}
-	<div class="text-error flex flex-col items-center justify-center p-20 text-3xl">
+	<div class="flex flex-col items-center justify-center p-20 text-3xl text-error">
 		<div
-			class="bg-opacity-70 flex w-[80%] flex-col items-center justify-center gap-10 rounded-2xl bg-white py-20 text-center font-bold"
+			class="bg-opacity-70 flex w-4/5 flex-col items-center justify-center gap-10 rounded-2xl bg-white py-20 text-center font-bold"
 		>
 			<div>Page not found...</div>
-			<a href="/water_safety_information" class="btn btn-primary h-14 px-12 text-xl">Back</a>
+			<a href="/water_safety_information" class="btn h-14 px-12 text-xl btn-primary">Back</a>
 		</div>
 	</div>
 {/if}

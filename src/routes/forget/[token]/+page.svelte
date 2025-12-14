@@ -25,7 +25,7 @@
 
 <div class="mt-10 mb-14 flex flex-col items-center justify-center">
 	<div
-		class="border-secondary bg-opacity-70 flex w-[20rem] flex-col items-center justify-center gap-6 rounded-2xl border-2 bg-white py-10"
+		class="bg-opacity-70 flex w-80 flex-col items-center justify-center gap-6 rounded-2xl border-2 border-secondary bg-white py-10"
 	>
 		{#if data.username || page.form?.message}
 			<div class="text-center text-5xl leading-tight"><b>Change Password</b></div>
@@ -35,7 +35,7 @@
 					<div class="h-2"></div>
 					<input
 						type="text"
-						class="input input-primary w-full"
+						class="input w-full input-primary"
 						disabled
 						name="username"
 						value={data.username}
@@ -47,7 +47,7 @@
 					<div class="h-2"></div>
 					<input
 						type="password"
-						class="input input-primary w-full"
+						class="input w-full input-primary"
 						name="password"
 						autocapitalize="none"
 					/>
@@ -64,7 +64,7 @@
 				</div>
 			{/if}
 		{:else}
-			<div class="text-error text-center text-5xl leading-tight">Invalid Token</div>
+			<div class="text-center text-5xl leading-tight text-error">Invalid Token</div>
 		{/if}
 	</div>
 </div>

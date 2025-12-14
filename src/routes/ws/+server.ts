@@ -4,7 +4,7 @@ import { validateSessionToken } from '$lib/server/session';
 import type { data_schema } from '$lib/types';
 import { error } from '@sveltejs/kit';
 import { pack, unpack } from 'msgpackr';
-import type { z } from 'zod/v4-mini';
+import type { z } from 'zod/v4';
 import type { Socket } from './$types';
 
 export const socket: Socket = {

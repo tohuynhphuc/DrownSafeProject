@@ -17,7 +17,7 @@
 
 <div class="mt-10 mb-14 flex flex-col items-center justify-center">
 	<div
-		class="border-secondary bg-opacity-70 flex w-[20rem] flex-col items-center justify-center gap-6 rounded-2xl border-2 bg-white py-10"
+		class="bg-opacity-70 flex w-80 flex-col items-center justify-center gap-6 rounded-2xl border-2 border-secondary bg-white py-10"
 	>
 		<div class="text-center text-5xl leading-tight"><b>Forget Password</b></div>
 		<form
@@ -33,7 +33,7 @@
 				<div class="h-2"></div>
 				<input
 					type="text"
-					class="input input-primary w-full"
+					class="input w-full input-primary"
 					name="username_or_email"
 					autocapitalize="none"
 					required
@@ -41,7 +41,7 @@
 			</div>
 			<div class="flex flex-col items-center justify-center gap-1">
 				<div>Already have an account?</div>
-				<a href="/login" class="link link-error mb-1"> Login here</a>
+				<a href="/login" class="mb-1 link link-error"> Login here</a>
 				<div>Don't have an account yet?</div>
 				<a href="/register" class="link link-error"> Register now</a>
 			</div>
@@ -56,7 +56,7 @@
 				{page.form?.message}
 			</div>
 		{:else if submitted}
-			<div class="text-warning text-center font-semibold text-wrap">
+			<div class="text-center font-semibold text-wrap text-warning">
 				Please wait while we process your request...
 			</div>
 		{/if}

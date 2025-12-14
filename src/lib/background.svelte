@@ -1,5 +1,5 @@
 <img
-	src="/vgu.jpg"
+	src="/vgu.webp"
 	alt=""
 	class="fixed top-0 -z-50 h-full w-full object-cover object-center opacity-60 select-none"
 />

@@ -24,10 +24,10 @@
 		enctype="multipart/form-data"
 	>
 		<div class="required">Title</div>
-		<input type="text" name="title" required class="input input-primary flex w-full text-xl" />
+		<input type="text" name="title" required class="input flex w-full text-xl input-primary" />
 
 		<div class="required">Author</div>
-		<input type="text" name="author" required class="input input-primary flex w-full text-xl" />
+		<input type="text" name="author" required class="input flex w-full text-xl input-primary" />
 
 		<div class="required">Upload Image</div>
 		<input
@@ -35,19 +35,19 @@
 			name="image"
 			required
 			accept="image/*"
-			class="file-input input-primary flex w-full"
+			class="file-input flex w-full input-primary"
 		/>
 
 		<div class="required mt-2 self-start">Content</div>
 		<textarea
 			required
 			name="content"
-			class="textarea textarea-primary w-full text-xl font-normal"
+			class="textarea w-full text-xl font-normal textarea-primary"
 			rows="10"
 		></textarea>
 		<div class="hidden md:block"></div>
 		<div class="items-center justify-center text-center">
-			<input type="submit" class="btn btn-primary w-full" />
+			<input type="submit" class="btn w-full btn-primary" />
 		</div>
 		{#if page.form?.message}
 			<div

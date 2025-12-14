@@ -14,11 +14,11 @@
 	--color-customfooter: #708090;
 }
 
-@plugin "daisyui" {
+@plugin 'daisyui' {
 	themes: light;
 }
 
-@plugin "daisyui/theme" {
+@plugin 'daisyui/theme' {
 	name: 'light';
 	default: true;
 	--color-primary: #17c3b2;
@@ -35,7 +35,7 @@ html {
 }
 
 body {
-	@apply flex min-h-[100vh] flex-col;
+	@apply flex min-h-screen flex-col;
 }
 
 @keyframes blink {
@@ -66,7 +66,7 @@ html {
 }
 
 body {
-	@apply flex min-h-[100vh] flex-col;
+	@apply flex min-h-screen flex-col;
 }
 
 @keyframes blink {

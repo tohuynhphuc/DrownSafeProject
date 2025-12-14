@@ -1,8 +1,8 @@
-<div class="bg-customfooter mt-auto text-white">
+<div class="mt-auto bg-customfooter text-white">
 	<div class="px-5 py-14 text-xl xl:px-20">
 		<div class="flex flex-col items-start justify-between gap-y-10 xl:flex-row">
 			<div class="flex flex-row items-center gap-2">
-				<img src="/favicon.png" alt="Icon" class="size-10" />
+				<img src="/favicon-96x96.png" alt="Icon" class="size-10" />
 				<div><b>DROWNSAFE</b></div>
 			</div>
 			<div class="flex flex-col items-start text-left leading-relaxed xl:items-end xl:text-right">
@@ -30,21 +30,21 @@
 					class="flex flex-row items-center gap-2 hover:opacity-85"
 					target="_blank"
 				>
-					<img src="/facebook.png" alt="" class="size-6" />Vietnamese-German University VGU
+					<img src="/facebook.webp" alt="" class="size-6" />Vietnamese-German University VGU
 				</a>
 				<a
 					href="https://www.linkedin.com/school/vietnamese-german-university/"
 					class="flex flex-row items-center gap-2 hover:opacity-85"
 					target="_blank"
 				>
-					<img src="/linkedin.png" alt="" class="size-6" />Vietnamese-German University
+					<img src="/linkedin.webp" alt="" class="size-6" />Vietnamese-German University
 				</a>
 				<a
 					href="https://www.youtube.com/user/VietnameseGermanUniv"
 					class="flex flex-row items-center gap-2 hover:opacity-85"
 					target="_blank"
 				>
-					<img src="/youtube.png" alt="" class="size-6" />VGU Vietnamese-German University
+					<img src="/youtube.webp" alt="" class="size-6" />VGU Vietnamese-German University
 				</a>
 			</div>
 		</div>

@@ -8,7 +8,7 @@
 	import { icon, Icon } from 'leaflet';
 	import { pack } from 'msgpackr';
 	import { LayerGroup, Map, Marker, Popup, TileLayer } from 'sveaflet';
-	import { z } from 'zod/v4-mini';
+	import { z } from 'zod/v4';
 
 	let { data } = $props();
 	let latitude = $state<number>(0);
@@ -71,7 +71,7 @@
 	<div class="bg-opacity-70 flex flex-col items-center gap-3 bg-white px-10 py-10 text-2xl">
 		<div class="mb-7 w-full text-center text-3xl font-bold">
 			Current Situation: {#if isDanger}
-				<span class="text-error animate-blink text-5xl">Dangerous</span>
+				<span class="animate-blink text-5xl text-error">Dangerous</span>
 				<audio src="/sounds/warning.mp3" loop autoplay></audio>
 			{:else if isInSchool}
 				<span class="text-success">Safe</span>
@@ -80,43 +80,43 @@
 			{/if}
 		</div>
 		<div
-			class="flex w-full max-w-[30rem] flex-col items-center justify-start rounded-3xl bg-red-100 p-6 xl:flex-row xl:justify-between"
+			class="flex w-full max-w-120 flex-col items-center justify-start rounded-3xl bg-red-100 p-6 xl:flex-row xl:justify-between"
 		>
 			<div class="flex flex-row items-center gap-3 font-semibold">
-				<img src="/latitude.png" alt="" class="inline size-10" />
+				<img src="/latitude.webp" alt="" class="inline size-10" />
 				Latitude
 			</div>
 			<div>{latitude.toFixed(4)}</div>
 		</div>
 
 		<div
-			class="flex w-full max-w-[30rem] flex-col items-center justify-start rounded-3xl bg-yellow-100 p-6 xl:flex-row xl:justify-between"
+			class="flex w-full max-w-120 flex-col items-center justify-start rounded-3xl bg-yellow-100 p-6 xl:flex-row xl:justify-between"
 		>
 			<div class="flex flex-row items-center gap-3 font-semibold">
-				<img src="/latitude.png" alt="" class="inline size-10" />
+				<img src="/latitude.webp" alt="" class="inline size-10" />
 				Longitude
 			</div>
 			<div>{longitude.toFixed(4)}</div>
 		</div>
 
 		<div
-			class="flex w-full max-w-[30rem] flex-col items-center justify-start rounded-3xl bg-green-100 p-6 xl:flex-row xl:justify-between"
+			class="flex w-full max-w-120 flex-col items-center justify-start rounded-3xl bg-green-100 p-6 xl:flex-row xl:justify-between"
 		>
 			<div class="flex flex-row items-center gap-3 font-semibold">
-				<img src="/accuracy.png" alt="" class="inline size-10" />
+				<img src="/accuracy.webp" alt="" class="inline size-10" />
 				Accuracy
 			</div>
 			<div>{accuracy.toFixed(2)}m</div>
 		</div>
 	</div>
-	<div class="z-0 h-[600px] shadow-2xl">
+	<div class="z-0 h-150 shadow-2xl">
 		<Map
 			options={{
 				center: [11.107737, 106.615169],
 				zoom: window.screen.width < 1280 ? 16 : 17
 			}}
 		>
-			<TileLayer url={'https://tile.openstreetmap.org/{z}/{x}/{y}.png'} />
+			<TileLayer url={'https://tile.openstreetmap.org/{z}/{x}/{y}.webp'} />
 			{#if isInSchool}
 				<LayerGroup>
 					{#if isDanger}

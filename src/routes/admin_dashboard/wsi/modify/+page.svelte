@@ -4,7 +4,7 @@
 	import Background from '$lib/background.svelte';
 	import Dashboardnavbar from '$lib/dashboardnavbar.svelte';
 	import Footer from '$lib/footer.svelte';
-	import { z } from 'zod/v4-mini';
+	import { z } from 'zod/v4';
 
 	let { data } = $props();
 
@@ -44,7 +44,7 @@
 
 	<div class="flex flex-col items-center justify-center">
 		<select
-			class="select-lg select select-primary mb-5 items-center"
+			class="select mb-5 items-center select-lg select-primary"
 			bind:value={selection}
 			onchange={getWSI}
 		>
@@ -73,7 +73,7 @@
 			name="title"
 			bind:value={title}
 			required
-			class="input input-primary flex w-full text-xl"
+			class="input flex w-full text-xl input-primary"
 		/>
 
 		<div class="required">Author</div>
@@ -82,17 +82,17 @@
 			name="author"
 			bind:value={author}
 			required
-			class="input input-primary flex w-full text-xl"
+			class="input flex w-full text-xl input-primary"
 		/>
 
 		<div>Upload New Image</div>
-		<input type="file" name="image" accept="image/*" class="file-input input-primary flex w-full" />
+		<input type="file" name="image" accept="image/*" class="file-input flex w-full input-primary" />
 
 		<div class="required mt-2 self-start">Content</div>
 		<textarea
 			required
 			name="content"
-			class="textarea textarea-primary w-full text-xl font-normal"
+			class="textarea w-full text-xl font-normal textarea-primary"
 			rows="10">{content}</textarea
 		>
 
@@ -100,7 +100,7 @@
 
 		<div class="hidden md:block"></div>
 		<div class="items-center justify-center text-center">
-			<input type="submit" class="btn btn-primary w-full" />
+			<input type="submit" class="btn w-full btn-primary" />
 		</div>
 		{#if page.form?.message}
 			<div
