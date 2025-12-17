@@ -30,12 +30,11 @@
 	</div>
 </div>
 
-<div class="bg-customgreen">
-	<div class="flex flex-col items-center justify-center px-5 py-14 xl:flex-row xl:px-20">
+<div class="flex items-center justify-center bg-customgreen px-5 py-14 xl:px-20">
+	<div class="aspect-video w-full max-w-3xl">
 		<iframe
-			width="784"
-			height="441"
-			src="https://www.youtube.com/embed/DMz_rT_3TLI?si=yrySs3oHKlggoGPd"
+			class="h-full w-full"
+			src="https://www.youtube.com/embed/DMz_rT_3TLI"
 			title="DrownSafe Demo Video"
 			frameborder="0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
