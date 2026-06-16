@@ -1,18 +1,9 @@
 <script lang="ts">
 	import Background from '$lib/background.svelte';
-	import {
-		dangerZones,
-		fake_dangerZones,
-		markerDangerOptions,
-		markerSafeOptions,
-		vguBoundingBox
-	} from '$lib/const';
+	import { markerDangerOptions, markerSafeOptions } from '$lib/const';
 	import Dashboardnavbar from '$lib/dashboardnavbar.svelte';
 	import Footer from '$lib/footer.svelte';
-	import { isPointInPolygon } from '$lib/functions.js';
-	import { data_schema } from '$lib/types.js';
 	import { icon, Icon } from 'leaflet';
-	import { unpack } from 'msgpackr';
 	import { LayerGroup, Map, Marker, Popup, TileLayer } from 'sveaflet';
 
 	let { data } = $props();
@@ -27,47 +18,47 @@
 		markerDangerIcon = icon(markerDangerOptions);
 		markerSafeIcon = icon(markerSafeOptions);
 
-		const ws = new WebSocket(
-			`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/ws`
-		);
+		// const ws = new WebSocket(
+		// 	`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/ws`
+		// );
 
-		ws.addEventListener('message', (event) => {
-			try {
-				const { username, longitude, latitude, accuracy } = data_schema.parse(unpack(event.data));
+		// ws.addEventListener('message', (event) => {
+		// 	try {
+		// 		const { username, longitude, latitude, accuracy } = data_schema.parse(unpack(event.data));
 
-				const index = studentCoords.findIndex((studentCoord) => studentCoord.username === username);
-				if (accuracy > 40) {
-					return;
-				}
+		// 		const index = studentCoords.findIndex((studentCoord) => studentCoord.username === username);
+		// 		if (accuracy > 40) {
+		// 			return;
+		// 		}
 
-				if (!isPointInPolygon(latitude, longitude, vguBoundingBox)) {
-					return;
-				}
+		// 		if (!isPointInPolygon(latitude, longitude, vguBoundingBox)) {
+		// 			return;
+		// 		}
 
-				if (index !== -1) {
-					studentCoords.splice(index, 1);
-				}
+		// 		if (index !== -1) {
+		// 			studentCoords.splice(index, 1);
+		// 		}
 
-				studentCoords.push({ username, latitude, longitude });
+		// 		studentCoords.push({ username, latitude, longitude });
 
-				if (
-					(riverOption === 'fakeRiver' ? fake_dangerZones : dangerZones).some((dangerZone) =>
-						isPointInPolygon(latitude, longitude, dangerZone)
-					)
-				) {
-					if (!dangerStudents.includes(username)) {
-						dangerStudents.push(username);
-					}
-				} else {
-					const index = dangerStudents.indexOf(username);
-					if (index !== -1) {
-						dangerStudents.splice(index, 1);
-					}
-				}
-			} catch (e) {
-				console.log(e);
-			}
-		});
+		// 		if (
+		// 			(riverOption === 'fakeRiver' ? fake_dangerZones : dangerZones).some((dangerZone) =>
+		// 				isPointInPolygon(latitude, longitude, dangerZone)
+		// 			)
+		// 		) {
+		// 			if (!dangerStudents.includes(username)) {
+		// 				dangerStudents.push(username);
+		// 			}
+		// 		} else {
+		// 			const index = dangerStudents.indexOf(username);
+		// 			if (index !== -1) {
+		// 				dangerStudents.splice(index, 1);
+		// 			}
+		// 		}
+		// 	} catch (e) {
+		// 		console.log(e);
+		// 	}
+		// });
 	});
 
 	const studentCoords: { username: string; longitude: number; latitude: number }[] = $state([]);

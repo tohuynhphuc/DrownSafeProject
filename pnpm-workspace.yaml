@@ -1,4 +1,4 @@
-onlyBuiltDependencies:
-  - better-sqlite3
-  - esbuild
-  - msgpackr-extract
+allowBuilds:
+  '@tailwindcss/oxide': true
+  better-sqlite3: true
+  esbuild: true

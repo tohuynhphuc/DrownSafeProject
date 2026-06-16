@@ -6,7 +6,6 @@
 	import { isPointInPolygon } from '$lib/functions.js';
 	import type { data_schema } from '$lib/types.js';
 	import { icon, Icon } from 'leaflet';
-	import { pack } from 'msgpackr';
 	import { LayerGroup, Map, Marker, Popup, TileLayer } from 'sveaflet';
 	import { z } from 'zod/v4';
 
@@ -56,7 +55,7 @@
 	});
 
 	function send(data: z.infer<typeof data_schema>) {
-		ws.send(pack(data));
+		// ws.send(pack(data));
 	}
 </script>
 
